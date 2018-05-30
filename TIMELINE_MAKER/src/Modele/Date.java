@@ -3,12 +3,47 @@ package Modele;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+/**
+ * Date est la classe qui définit une date
+ * Cette classe est caractérisée par les informations suivante :
+ * <ul>
+ * <li>Le jour</li>
+ * <li>Le Mois</li>
+ * <li>L'Année</li>
+ * <li>Le jour de la semaine</li>
+ * @author Maxime VINCENT
+ * @version 1.0
+ *
+ */
 public class Date {
+	/**
+	 * chJour est un entier 
+	 * corespond au jour du mois
+	 */
 	private int chJour;
+	/**
+	 * chMois est un entier 
+	 * corespond au numéraux du mois
+	 */
 	private int chMois;
+	/**
+	 * chAnnee est un entier 
+	 * corespond a numémeraux de l'année
+	 */
 	private int chAnnee;
+	/**
+	 * chJourSemaine est un entier 
+	 * corespond a jour de la semaine
+	 */
 	private int chJourSemaine;  
-	   
+	 
+	
+
+    /** 
+     * <b>Constructeur de Date</b> 
+     * Ne prennant aucun paramètre.
+     * Initialise les champs a la date du Systeme
+     */ 
 	public Date ()   { 
 		GregorianCalendar dateAuj = new GregorianCalendar ();
 		chAnnee = dateAuj.get (Calendar.YEAR);
@@ -16,7 +51,17 @@ public class Date {
 		chJour = dateAuj.get (Calendar.DAY_OF_MONTH);
 		chJourSemaine = dateAuj.get (Calendar.DAY_OF_WEEK);
 	}
-	  
+
+    /** 
+     * <b>Constructeur de Date</b>  
+     * 
+     * @param parJour 
+     *     (int) Jour du mois 
+     * @param parMois 
+     *     (int) Mois de l'année 
+     * @param parAnnee 
+     *     (int) Année 
+     */ 
 	public Date (int parJour, int parMois, int parAnnee)   {   
 		chJour = parJour;
 		chMois = parMois;
@@ -25,6 +70,11 @@ public class Date {
 		chJourSemaine = date.get (Calendar.DAY_OF_WEEK);				
 	} 
 	
+    /** 
+     * Méthode toString de la class Date
+     * 
+     * @return la date sous la forme "nomDuJour numérauxDuJour nomDuMois"
+     */ 
 	public String toString () {
 		String chaine = new String();
 		switch (chJourSemaine) {
