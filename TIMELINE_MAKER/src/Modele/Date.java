@@ -11,6 +11,7 @@ import java.util.GregorianCalendar;
  * <li>Le Mois</li>
  * <li>L'Année</li>
  * <li>Le jour de la semaine</li>
+ * </ul>
  * @author Maxime VINCENT
  * @version 1.0
  *
