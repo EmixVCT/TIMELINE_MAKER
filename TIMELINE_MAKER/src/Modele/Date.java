@@ -4,29 +4,30 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Date {
-	private int jour;
-	private int mois;
-	private int annee;
-	private int jourSemaine;  
+	private int chJour;
+	private int chMois;
+	private int chAnnee;
+	private int chJourSemaine;  
 	   
 	public Date ()   { 
 		GregorianCalendar dateAuj = new GregorianCalendar ();
-		annee = dateAuj.get (Calendar.YEAR);
-		mois = dateAuj.get (Calendar.MONTH)+1; 
-		jour = dateAuj.get (Calendar.DAY_OF_MONTH);
-		jourSemaine = dateAuj.get (Calendar.DAY_OF_WEEK);
+		chAnnee = dateAuj.get (Calendar.YEAR);
+		chMois = dateAuj.get (Calendar.MONTH)+1; 
+		chJour = dateAuj.get (Calendar.DAY_OF_MONTH);
+		chJourSemaine = dateAuj.get (Calendar.DAY_OF_WEEK);
 	}
 	  
 	public Date (int parJour, int parMois, int parAnnee)   {   
-		jour = parJour;
-		mois = parMois;
-		annee = parAnnee; 
-		GregorianCalendar date = new GregorianCalendar (annee,mois-1,jour);
-		jourSemaine = date.get (Calendar.DAY_OF_WEEK);				
+		chJour = parJour;
+		chMois = parMois;
+		chAnnee = parAnnee; 
+		GregorianCalendar date = new GregorianCalendar (chAnnee,chMois-1,chJour);
+		chJourSemaine = date.get (Calendar.DAY_OF_WEEK);				
 	} 
+	
 	public String toString () {
 		String chaine = new String();
-		switch (jourSemaine) {
+		switch (chJourSemaine) {
 			case 1: chaine = "dimanche"; break;
 			case 2: chaine = "lundi"; break;
 			case 3: chaine = "mardi"; break;
@@ -35,8 +36,8 @@ public class Date {
 			case 6: chaine = "vendredi"; break;
 			case 7: chaine = "samedi"; break;
 			}
-		chaine += " " + jour + " ";
-		switch (mois) {
+		chaine += " " + chJour + " ";
+		switch (chMois) {
 			case 1: chaine += "janvier"; break;
 			case 2: chaine += "février"; break;
 			case 3: chaine += "mars"; break;
@@ -53,19 +54,35 @@ public class Date {
 		return chaine;
 	}
 	public int getAnnee() { 
-		return annee;
+		return chAnnee;
 	}
 
 	public int getJour() { 
-		return jour;
+		return chJour;
 	}
 
 	public int getMois() { 
-		return mois;
+		return chMois;
 	}
 
 	public int getJourSemaine () {
-		return jourSemaine;
+		return chJourSemaine;
+	}
+
+	public void setJour(int jour) {
+		this.chJour = jour;
+	}
+
+	public void setMois(int mois) {
+		this.chMois = mois;
+	}
+
+	public void setAnnee(int annee) {
+		this.chAnnee = annee;
+	}
+
+	public void setJourSemaine(int jourSemaine) {
+		this.chJourSemaine = jourSemaine;
 	}
 	
 	
