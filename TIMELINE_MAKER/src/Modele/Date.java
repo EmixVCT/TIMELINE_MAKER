@@ -14,7 +14,6 @@ import java.util.GregorianCalendar;
  * </ul>
  * @author Maxime VINCENT
  * @version 1.0
- *
  */
 public class Date {
 	/**
