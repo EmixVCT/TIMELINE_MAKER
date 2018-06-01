@@ -11,10 +11,9 @@ public class FenetreTimeline extends JFrame {
 	public FenetreTimeline(String parTitre) {
 		super(parTitre);
 		
-		JPanel contentPane = new JPanel();
+		PanelTimeline contentPane = new PanelTimeline();
 		
 		setContentPane(contentPane);
-		contentPane.setBackground(new Color(230,67,98));
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(800,600);
 		setVisible(true);
