@@ -15,7 +15,7 @@ import java.util.GregorianCalendar;
  * @author Maxime VINCENT
  * @version 1.0
  */
-public class Date {
+public class Date{
 	/**
 	 * chJour est un entier 
 	 * corespond au jour du mois
@@ -62,10 +62,24 @@ public class Date {
      * @param parAnnee 
      *     (int) Année 
      */ 
-	public Date (int parJour, int parMois, int parAnnee)   {   
-		chJour = parJour;
-		chMois = parMois;
-		chAnnee = parAnnee; 
+	public Date (int parJour, int parMois, int parAnnee) throws ExceptionDate  { 
+		if (parMois <= 0 || parMois > 12) {
+			throw new ExceptionDate("Le mois doit etre compris entre 1 et 12 inclus");
+		}else {
+			chMois = parMois;
+		}
+		GregorianCalendar dateAuj = new GregorianCalendar ();
+		if (parAnnee > dateAuj.get (Calendar.YEAR)) {
+			throw new ExceptionDate("L'année doit etre inferieur ou egale a l'année actuelle");
+		}else {
+			chAnnee = parAnnee; 
+		}
+		if (parJour <= 0 || parJour > dernierJourDuMois(parMois,parAnnee)) {
+			throw new ExceptionDate("Le jour doit etre comprie entre 1 et "+Integer.toString(dernierJourDuMois(parMois,parAnnee))+" inclus");
+		}else {
+			chJour = parJour;
+		}
+
 		GregorianCalendar date = new GregorianCalendar (chAnnee,chMois-1,chJour);
 		chJourSemaine = date.get (Calendar.DAY_OF_WEEK);				
 	} 
@@ -118,22 +132,26 @@ public class Date {
 	public int getJourSemaine () {
 		return chJourSemaine;
 	}
-
-	public void setJour(int jour) {
-		this.chJour = jour;
-	}
-
-	public void setMois(int mois) {
-		this.chMois = mois;
-	}
-
-	public void setAnnee(int annee) {
-		this.chAnnee = annee;
-	}
-
-	public void setJourSemaine(int jourSemaine) {
-		this.chJourSemaine = jourSemaine;
-	}
+    /** 
+     * Méthode dernierJourDuMois de la class Date
+     * @param parMois Corespond au mois 
+     * @param parAnnee Corespond a l'année
+     * @return Un entier corespondant au dernier jour du mois
+     */ 
+	public static int dernierJourDuMois (int parMois, int parAnnee) {
+		switch (parMois) {
+			case 2 : if (estBissextile (parAnnee))  return 29 ; else return 28 ;  
+			case 4 : 	 case 6 : 	 case 9 : 	 case 11 : return 30 ;
+			default : return 31 ;
+			}  // switch
+	}  
 	
-	
+    /** 
+     * Méthode estBissextile de la class Date 
+     * @param parAnnee Corespond a l'année
+     * @return Un test qui renvoi un boléen en fonction de l'année bissextile ou non
+     */
+	private static boolean estBissextile(int parAnnee) {
+		return parAnnee % 4 == 0 && (parAnnee % 100 != 0 || parAnnee % 400 == 0);
+	}
 }
