@@ -1,11 +1,13 @@
 package Vue;
 
+import java.awt.Color;
+
 import javax.swing.JPanel;
 
 public class PanelCreation extends JPanel {
 
 	public PanelCreation() {
-		// TODO Auto-generated constructor stub
+		setBackground(Color.YELLOW);
 	}
 
 }
