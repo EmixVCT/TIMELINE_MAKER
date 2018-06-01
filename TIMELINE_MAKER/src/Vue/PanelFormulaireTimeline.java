@@ -1,9 +1,13 @@
 package Vue;
 
-public class PanelFormulaireTimeline {
+import java.awt.Color;
+
+import javax.swing.JPanel;
+
+public class PanelFormulaireTimeline extends JPanel{
 
 	public PanelFormulaireTimeline() {
-		// TODO Auto-generated constructor stub
+		setBackground(Color.RED);
 	}
 
 }
