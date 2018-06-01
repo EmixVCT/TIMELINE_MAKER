@@ -8,23 +8,32 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import Controleur.Controleur;
+import Modele.Timeline;
+
 public class PanelTimelineMaker extends JPanel implements ActionListener{
 
 	private CardLayout gestionnaireDeCartes;
+	
+	private Timeline timeline;
+	private PanelFormulaireTimeline panelFormulaireTimeline = new PanelFormulaireTimeline();
+	private PanelFormulaireEvenement panelFormulaireEvenement = new PanelFormulaireEvenement();
+	
+	private PanelTimeline panelTimeline = new PanelTimeline();
+	private PanelCreation panelCreation = new PanelCreation(panelFormulaireTimeline,panelFormulaireEvenement);
 	
 	public PanelTimelineMaker() {
 		setBackground(new Color(230,67,98));
 		gestionnaireDeCartes = new CardLayout(5,5);
 		
 		setLayout(gestionnaireDeCartes);
-		PanelTimeline panelTimeline = new PanelTimeline();
-		
-		PanelCreation panelCreation = new PanelCreation();
-		
+
 		add(panelCreation,"creation");
 		add(panelTimeline,"timeline");
 		
 		gestionnaireDeCartes.show(this,"creation");
+		
+		Controleur controleur = new Controleur(timeline,panelCreation,panelTimeline,panelFormulaireEvenement ,panelFormulaireTimeline);
 	}
 
 	public void actionPerformed(ActionEvent parEvt) {

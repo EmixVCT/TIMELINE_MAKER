@@ -9,12 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import Controleur.Controleur;
-import Modele.Evenement;
 import Modele.Timeline;
 
 public class PanelFormulaireTimeline extends JPanel{
@@ -110,22 +107,22 @@ public class PanelFormulaireTimeline extends JPanel{
 
         //JComboBox Jours FIN
 		contraintes.gridx =1 ;
-        boxJourDebut = new JComboBox(jours) ;
-        boxJourDebut.setSelectedItem(jours[0]);;
-		this.add(boxJourDebut, contraintes);
+        boxJourFin = new JComboBox(jours) ;
+        boxJourFin.setSelectedItem(jours[0]);;
+		this.add(boxJourFin, contraintes);
 		
         //JComboBox Mois FIN
 		contraintes.gridx =2 ;
-        boxMoisDebut = new JComboBox(mois) ;
-        boxMoisDebut.setSelectedItem(mois[0]);;
-		this.add(boxMoisDebut, contraintes);
+        boxMoisFin = new JComboBox(mois) ;
+        boxMoisFin.setSelectedItem(mois[0]);;
+		this.add(boxMoisFin, contraintes);
 		
         //JComboBox Année FIN
 		contraintes.gridx =3 ;
 		contraintes.gridwidth = 2;
-        boxAnneeDebut = new JComboBox(annee) ;
-        boxAnneeDebut.setSelectedItem(annee[0]);;
-		this.add(boxAnneeDebut, contraintes);
+		boxAnneeFin = new JComboBox(annee) ;
+		boxAnneeFin.setSelectedItem(annee[0]);;
+		this.add(boxAnneeFin, contraintes);
 		
 		//étiquette periode
         contraintes.gridy=4;
