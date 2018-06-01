@@ -24,7 +24,10 @@ public class PanelCreation extends JPanel {
 		add(panelFormulaireTimeline,"formTimeline");
 		add(panelFormulaireEvenement,"formEvenement");
 		
-		gestionnaireFormulaire.show(this,"formEvenement");
-
+		gestionnaireFormulaire.show(this,"formTimeline");
+	}
+	
+	public void changerFormulaire() {
+		gestionnaireFormulaire.show(this, "formEvenement");
 	}
 }
