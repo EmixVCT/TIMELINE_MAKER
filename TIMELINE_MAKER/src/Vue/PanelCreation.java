@@ -5,8 +5,11 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
-public class PanelCreation extends JPanel {
+import Modele.Date;
+import Modele.Timeline;
 
+public class PanelCreation extends JPanel {
+	
 	private CardLayout gestionnaireFormulaire;
 	
 	public PanelCreation() {
@@ -24,5 +27,4 @@ public class PanelCreation extends JPanel {
 		gestionnaireFormulaire.show(this,"formEvenement");
 
 	}
-
 }
