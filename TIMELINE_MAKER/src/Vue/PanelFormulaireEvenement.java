@@ -4,11 +4,14 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -18,100 +21,156 @@ import Modele.Date;
 import Modele.Evenement;
 
 public class PanelFormulaireEvenement extends JPanel{
-	public final String NOM_BOUTON="+";
-	JButton boutonAjout = new JButton(NOM_BOUTON);	
-	Date dateFormulaire = new Date();
-	JTextField fieldTitre = new JTextField(10);
-	JTextField fieldLieu= new JTextField(10);
-	JLabel labelDate = new JLabel(dateFormulaire.toString());
-	JTextArea area = new JTextArea("",5,10);
+	
+	private JLabel	titreFenetre;
+	private JButton ajoutEvt = new JButton("Crée");
+	private JTextField textTitre = new JTextField(15);
+	
+	private JComboBox boxJour;
+	private JComboBox boxMois;
+	private JComboBox boxAnnee;
+
+	private JComboBox boxpoids;
+	
+	private JTextField textLienPhoto = new JTextField(15);
+
+	private JTextArea textDescription = new JTextArea(10,20);
 	
 	public PanelFormulaireEvenement(){
-		setLayout (new GridBagLayout());
+		
+		setBackground(new Color(186,166,79));
+		titreFenetre = new JLabel("Création d'un evenement");
+		
+		GridBagLayout gestionnaire = new GridBagLayout();
+		this.setLayout(gestionnaire);
+		GridBagConstraints contraintes = new GridBagConstraints();
+		contraintes.insets = new Insets(10, 10, 10, 10) ;
+		
+		contraintes.fill = GridBagConstraints.HORIZONTAL;
+		contraintes.anchor = GridBagConstraints.WEST;
+		
+		contraintes.gridx=0;contraintes.gridx=0;
+		contraintes.gridwidth = 4;
+		this.add(titreFenetre, contraintes) ;
+
+		contraintes.gridwidth = 1;
+		contraintes.gridx = 4 ;// on place le boutton plus loin � droite
+		this.add(ajoutEvt, contraintes);
+		ajoutEvt.setActionCommand("cree") ;// le bouton se met � l'�coute
+
+
+		// �tiquette "Titre"
+        contraintes.gridy=1;contraintes.gridx=0;
 		JLabel labelTitre = new JLabel("Titre");
-		JLabel labelLieu = new JLabel("Lieu");
-		JLabel labelDebut = new JLabel("D�but");
-		JLabel labelFin = new JLabel("Fin");
+		labelTitre.setDisplayedMnemonic('T');
+		this.add(labelTitre, contraintes);
+
+        // saisie du Titre
+		contraintes.gridx = 1 ;
+		contraintes.gridwidth = 4;
+		this.add(textTitre, contraintes) ;
+		
+		
+		// �tiquette "Date"
+		contraintes.gridwidth = 1;
+		contraintes.gridx = 0 ;
+		contraintes.gridy = 2 ;
+		JLabel labelDate = new JLabel("Date");
+		labelDate.setDisplayedMnemonic('D');
+		this.add(labelDate, contraintes);
+
+        //JComboBox Jours
+		contraintes.gridx =1 ;
+		String jours[] = {"1","2","3","4","5","6","7","8","9"};
+        boxJour = new JComboBox(jours) ;
+        boxJour.setSelectedItem(jours[0]);;
+		this.add(boxJour, contraintes);
+		
+        //JComboBox Mois
+		contraintes.gridx =2 ;
+		String mois[] = {"1","2","3","4","5","6","7","8","9","10","11","12"};
+        boxMois = new JComboBox(mois) ;
+        boxMois.setSelectedItem(mois[0]);;
+		this.add(boxMois, contraintes);
+		
+        //JComboBox Année
+		contraintes.gridx =3 ;
+		contraintes.gridwidth = 2;
+		String annee[] = {"1999","2001","2002","2003","2004","2005","2006","2007","2008"};
+        boxAnnee = new JComboBox(annee) ;
+        boxAnnee.setSelectedItem(annee[0]);;
+		this.add(boxAnnee, contraintes);
+		
+		
+		
+		
+		// étiquette "Poids"
+		contraintes.gridx = 0;
+		contraintes.gridwidth = 1;
+		contraintes.gridy = 3 ;
+		JLabel labelPoid = new JLabel("Poids");
+		labelPoid.setDisplayedMnemonic('P');
+		this.add(labelPoid, contraintes);
+
+		// JComboBox Poid
+		contraintes.gridx =1 ;
+		contraintes.gridwidth = 3;
+		
+		String poids[] = new String[4];
+		for(int i = 0 ; i <= 3 ; i++) {
+				poids[i] = ""+(i+1) ;
+		}
+        boxpoids = new JComboBox(poids) ;
+        boxpoids.setSelectedItem(0) ;
+		this.add(boxpoids, contraintes);// ajout des heures
+		
+		// �tiquette "ien de la photo"
+        contraintes.gridy=4;contraintes.gridx=0;
+		JLabel labelPhoto = new JLabel("Photo (lien)");
+		labelPhoto.setDisplayedMnemonic('P');
+		this.add(labelPhoto, contraintes);
+
+        // saisie du lien de la photo
+		contraintes.gridx = 2 ;
+		contraintes.gridwidth = 3;
+		this.add(textLienPhoto, contraintes) ;
+		
+		
+        // étiquette "Description"
+		contraintes.insets = new Insets(10,10,10,10);
+		contraintes.fill = GridBagConstraints.BOTH ;
+		contraintes.gridx = 0 ;
+		contraintes.gridy = 5 ;
 		JLabel labelDescription = new JLabel("Description");
-		
-		GridBagConstraints contrainte = new GridBagConstraints();
-		contrainte.insets=new Insets(5,5,5,5);
+		labelDescription.setDisplayedMnemonic('e');
+		this.add(labelDescription, contraintes);
 
-		//premiere ligne
-		contrainte.gridx=4 ; contrainte.gridy=1 ;
-		contrainte.gridwidth=4;
-		add(fieldTitre, contrainte);
-		
-		contrainte.gridx=4 ; contrainte.gridy=2 ;
-		contrainte.gridwidth=4;
-		add(fieldLieu, contrainte);
-		
-		contrainte.gridx=4 ; contrainte.gridy=0 ;
-		contrainte.gridwidth=4;
-		add(boutonAjout, contrainte);
-		
-		//deusiemme ligne (marche un peut)
-		contrainte.gridx=2 ; contrainte.gridy=2 ;
-		contrainte.gridwidth=2;
-		this.add(labelDate, contrainte);
-		
-		//premier colone
-		contrainte.gridx=0 ; contrainte.gridy=0 ;
-		contrainte.gridwidth=1;
-		this.add(labelDate, contrainte);
-		
-		contrainte.gridx=0 ; contrainte.gridy=1 ;
-		contrainte.gridwidth=1;
-		this.add(labelTitre, contrainte);
-		
-		contrainte.gridx=0 ; contrainte.gridy=2 ;
-		contrainte.gridwidth=1;
-		this.add(labelLieu, contrainte);
-		
-		contrainte.gridx=0 ; contrainte.gridy=3 ;
-		contrainte.gridwidth=1;
-		this.add(labelDebut, contrainte);
-		
-		contrainte.gridx=0 ; contrainte.gridy=4 ;
-		contrainte.gridwidth=1;
-		this.add(labelFin, contrainte);
-		
-		contrainte.gridx=0 ; contrainte.gridy=5 ;
-		contrainte.gridwidth=1;
-		this.add(labelDescription, contrainte);
-		
-		contrainte.gridx=1 ; contrainte.gridy=5 ;
-		contrainte.gridwidth=0;
-		contrainte.gridheight=5;
-		this.add(area, contrainte);
-		
-	}
-	/*
-	public Evenement getEvenement(){
-		return new Evenement(getDate(),fieldTitre.getText(),fieldLieu.getText());
-	}*/
-	
-	public Date getDate(){
-		return	dateFormulaire;
-	}
-	
-	public void setDate(Date parDate){
-		dateFormulaire = parDate;
-		labelDate.setText(dateFormulaire.toString());
-	}
-	/*
+        // zone de saisie (Dexcription)
+		JScrollPane scroll = new JScrollPane (textDescription);
+		contraintes.gridwidth = 3;
+		contraintes.gridx = 2 ;
+		this.add(scroll, contraintes) ;
+	}// PanelFormuaire()
+
 	public void enregistreEcouteur(Controleur parC){
-		boutonAjout.addActionListener(parC);
-	}*/
-
-	public void reset() {
-		fieldTitre.setText(new String());
-		fieldLieu.setText(new String());
-		area.setText(new String());
-		
-		GregorianCalendar calendar = new GregorianCalendar();
-		fieldTitre.requestFocus();
+		ajoutEvt.addActionListener(parC);
 	}
+	
+	
+	public Evenement getEvenement(){
+		return null;//new Evenement (getDate(),textTitre.getText(),textLieu.getText());
+	}
+    
+    public void reset(){
+    	this.textTitre.setText("") ;
+        //this.textLieu.setText("") ;
+        this.textDescription.setText("") ;
+        
+       // boxHeures.setSelectedItem(String.valueOf(calendrier.get(Calendar.HOUR_OF_DAY))) ;
+       // boxMinutes.setSelectedItem(String.valueOf(calendrier.get(Calendar.MINUTE))) ;
+        this.textTitre.requestFocus() ;
+    }
+    
 	
 }
 
