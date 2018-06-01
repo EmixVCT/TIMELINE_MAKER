@@ -4,20 +4,20 @@ import java.awt.Color;
 import java.awt.Insets;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 public class FenetreTimeline extends JFrame {
 
 	public FenetreTimeline(String parTitre) {
 		super(parTitre);
 		
-		PanelTimeline contentPane = new PanelTimeline();
+		PanelTimelineMaker contentPane = new PanelTimelineMaker();
 		
 		setContentPane(contentPane);
+		setBackground(Color.LIGHT_GRAY);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(800,600);
+		setSize(900,500);
 		setVisible(true);
-		setLocation(200,300);
+		setLocation(200,100);
 		}
 			
 	public static void main(String [] args){ //main
@@ -27,7 +27,7 @@ public class FenetreTimeline extends JFrame {
 	
 	
 	public Insets getInsets (){
-		return new Insets (50,30,15,30) ; // HAUT,GAUCHE,BAS,DROITE
+		return new Insets (40,20,20,20) ; // HAUT,GAUCHE,BAS,DROITE
 		}
 
 }

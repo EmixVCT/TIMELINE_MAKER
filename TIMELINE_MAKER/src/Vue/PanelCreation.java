@@ -1,6 +1,8 @@
 package Vue;
 
-public class PanelCreation {
+import javax.swing.JPanel;
+
+public class PanelCreation extends JPanel {
 
 	public PanelCreation() {
 		// TODO Auto-generated constructor stub
