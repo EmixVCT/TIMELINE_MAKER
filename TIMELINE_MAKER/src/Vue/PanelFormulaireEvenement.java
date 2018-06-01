@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -23,7 +21,7 @@ import Modele.Evenement;
 public class PanelFormulaireEvenement extends JPanel{
 	
 	private JLabel	titreFenetre;
-	private JButton ajoutEvt = new JButton("Crée");
+	private JButton ajoutEvt = new JButton("Ajouter");
 	private JTextField textTitre = new JTextField(15);
 	
 	private JComboBox boxJour;
@@ -39,7 +37,7 @@ public class PanelFormulaireEvenement extends JPanel{
 	public PanelFormulaireEvenement(){
 		
 		setBackground(new Color(186,166,79));
-		titreFenetre = new JLabel("Création d'un evenement");
+		titreFenetre = new JLabel("Ajout d'un evenement");
 		
 		GridBagLayout gestionnaire = new GridBagLayout();
 		this.setLayout(gestionnaire);
@@ -56,7 +54,7 @@ public class PanelFormulaireEvenement extends JPanel{
 		contraintes.gridwidth = 1;
 		contraintes.gridx = 4 ;// on place le boutton plus loin � droite
 		this.add(ajoutEvt, contraintes);
-		ajoutEvt.setActionCommand("cree") ;// le bouton se met � l'�coute
+		ajoutEvt.setActionCommand("ajout") ;// le bouton se met � l'�coute
 
 
 		// �tiquette "Titre"
@@ -163,11 +161,7 @@ public class PanelFormulaireEvenement extends JPanel{
     
     public void reset(){
     	this.textTitre.setText("") ;
-        //this.textLieu.setText("") ;
         this.textDescription.setText("") ;
-        
-       // boxHeures.setSelectedItem(String.valueOf(calendrier.get(Calendar.HOUR_OF_DAY))) ;
-       // boxMinutes.setSelectedItem(String.valueOf(calendrier.get(Calendar.MINUTE))) ;
         this.textTitre.requestFocus() ;
     }
     
