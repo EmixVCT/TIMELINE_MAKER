@@ -63,7 +63,7 @@ public class Date{
      *     (int) Année 
      */ 
 	public Date (int parJour, int parMois, int parAnnee) throws ExceptionDate  { 
-		if (parMois <= 0 || parMois > 12) {
+		if ((parMois <= 0)|| (parMois > 12)) {
 			throw new ExceptionDate("Le mois doit etre compris entre 1 et 12 inclus");
 		}else {
 			chMois = parMois;

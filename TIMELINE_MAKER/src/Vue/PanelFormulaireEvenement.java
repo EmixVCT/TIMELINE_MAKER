@@ -154,14 +154,14 @@ public class PanelFormulaireEvenement extends JPanel{
 		ajoutEvt.addActionListener(parC);
 	}
 	
-	
 	public Evenement getEvenement(){
 		return null;//new Evenement (getDate(),textTitre.getText(),textLieu.getText());
 	}
     
     public void reset(){
     	this.textTitre.setText("") ;
-        this.textDescription.setText("") ;
+        this.textDescription.setText("");
+        this.textLienPhoto.setText("");
         this.textTitre.requestFocus() ;
     }
     
