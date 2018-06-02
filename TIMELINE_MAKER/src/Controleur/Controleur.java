@@ -41,7 +41,7 @@ public class Controleur implements ActionListener {
 		else if(parEvt.getActionCommand().equals("ajout")){
 			timeline.ajout(panelFormulaireEvenement.getEvenement());
 			panelFormulaireEvenement.reset();	
-			System.out.println(timeline.toString() +"\n"+ timeline.getEvenement(1999).toString() );
+			panelTimeline.setTable(timeline);
 		}
 		
 	}

@@ -48,7 +48,6 @@ public class PanelTable extends JPanel {
 
 	public void updateTable(Timeline parTimeline) {
 		ModelTable parModele = new ModelTable(parTimeline);
-		
 		tableTimeline.setModel(parModele);
 		
 		//System.out.println(parTimeline.toString());

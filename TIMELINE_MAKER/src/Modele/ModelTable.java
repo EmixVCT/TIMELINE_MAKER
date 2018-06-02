@@ -33,18 +33,19 @@ public class ModelTable extends DefaultTableModel{
 		this.setColumnIdentifiers(Entete); 
 		
 		//Les evenements 
-		Collection <Evenement> evtsAnnee = timeline.getEvenement(1999); // A check
-		
-		if (evtsAnnee != null){
-			for (Evenement evt : evtsAnnee){
-				ajoutEvenement(evt,1999); // 
+		for(int i = chAnneeDebut ; i <= chAnneeFin;i++) {
+			Collection <Evenement> evtsAnnee = timeline.getEvenement(i); // A check
+			if (evtsAnnee != null){
+				for (Evenement evt : evtsAnnee){
+					ajoutEvenement(evt); // 
+				}
 			}
 		}
 	}//constructeur
 
-	public void ajoutEvenement(Evenement parEvt,int parAnnee) {
-		int indiceColonne = parAnnee - chAnneeDebut;
-		int indiceLigne = parEvt.getChPoids();
+	public void ajoutEvenement(Evenement parEvt) {
+		int indiceColonne = parEvt.getChDate().getAnnee() - chAnneeDebut;
+		int indiceLigne = parEvt.getChPoids()-1;
 		
 		while (indiceLigne<15 && getValueAt(indiceLigne, indiceColonne)!= null){
 			indiceLigne++;
