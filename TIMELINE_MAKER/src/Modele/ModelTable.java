@@ -51,7 +51,6 @@ public class ModelTable extends DefaultTableModel{
 			for (Evenement evt : listEvts) {
 				ajoutEvenement(evt);
 			}
-			
 		}
 
 	}//constructeur

@@ -5,6 +5,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -19,7 +20,6 @@ public class PanelTimeline extends JPanel{
 	private Timeline timeline;
 	private PanelTable panelTable;
 	private PanelEvenement[] tabPanelEvenement;
-	private HashMap<Date,PanelEvenement> hashPanelEvenement;
 	
 	private PanelEvenement panelEvenement;
 	
@@ -70,6 +70,8 @@ public class PanelTimeline extends JPanel{
 		
 		dateCourante = parEvt.getChDate(); // add dateCourante
 		nbPanelEvenements += 1;
+		System.out.println(tabPanelEvenement.toString());
+
 	}
 	
 	public void showEvenement(Evenement parEvt) {
@@ -77,20 +79,33 @@ public class PanelTimeline extends JPanel{
 		dateCourante = parEvt.getChDate(); //add dateCourante
 	}
 
-	public void apres() {
-		HashMap<Date, ArrayList<Evenement>> hashevt = timeline.getHash_Evenements();
-		int anneeMin = timeline.getDateDebut().getAnnee();
-		int anneeMax = timeline.getDateFin().getAnnee();
+	public void apres() {		
+		//Les evenements 
+		HashMap<Date,ArrayList<Evenement>> hashevts = timeline.getHash_Evenements();
+		Iterator dates = hashevts.keySet().iterator();
+		Date date;
+		ArrayList<Evenement> listEvts;
 		
-		//hashPanelEvenement;
-		
-		
-		
+		Date tamp = timeline.getDateFin();
+		while(dates.hasNext()) {
+			date = (Date) dates.next();
+			listEvts = hashevts.get(date);
+			for (Evenement evt : listEvts) {
+				if (evt.getChDate().compareTo(dateCourante) > 0) {
+					if (evt.getChDate().compareTo(tamp)>0)
+						tamp = evt.getChDate();
+				}
+			}
+		}
+		ArrayList<Evenement> titres = hashevts.get(tamp);
+		for(Evenement evt : titres) {
+			showEvenement(evt);
+		}
 	}
 
 	public void avant() {
-		// TODO Auto-generated method stub
-		
+		gestionnaireEvts.previous(panelEvts);
+
 	}
 
 }

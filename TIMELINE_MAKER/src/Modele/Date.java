@@ -3,6 +3,7 @@ package Modele;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+
 /**
  * Date est la classe qui définit une date
  * Cette classe est caractérisée par les informations suivante :
@@ -155,4 +156,22 @@ public class Date{
 	private static boolean estBissextile(int parAnnee) {
 		return parAnnee % 4 == 0 && (parAnnee % 100 != 0 || parAnnee % 400 == 0);
 	}
+	public int compareTo (Date parDate) {
+		if (chAnnee < parDate.chAnnee)
+			return -1;
+		if (chAnnee > parDate.chAnnee)
+			return 1;
+		// les annees sont =
+		if (chMois < parDate.chMois)
+			return -1;
+		if (chMois > parDate.chMois)
+			return 1;
+		// les mois sont =
+		if (chJour < parDate.chJour)
+			return -1;
+		if (chJour > parDate.chJour)
+			return 1;
+		return 0;	
+  }
+	  
 }

@@ -29,6 +29,7 @@ public class Controleur implements ActionListener {
 		
 		panelFormulaireEvenement.enregistreEcouteur(this);
 		panelFormulaireTimeline.enregistreEcouteur(this);
+		panelTimeline.enregistreEcouteur(this);
 	}
 
 	public void actionPerformed(ActionEvent parEvt) {
@@ -40,13 +41,15 @@ public class Controleur implements ActionListener {
 			
 		}
 		else if(parEvt.getActionCommand().equals("ajout")){
-			timeline.ajout(panelFormulaireEvenement.getEvenement());
-			panelTimeline.addEvenement(panelFormulaireEvenement.getEvenement());
+			Evenement evt1 = panelFormulaireEvenement.getEvenement();
+			timeline.ajout(evt1);
+			panelTimeline.addEvenement(evt1);
 			panelFormulaireEvenement.reset();	
 			panelTimeline.setTable(timeline);
 		}
 		else if(parEvt.getActionCommand().equals("droite")){
 			panelTimeline.apres();
+			System.out.println("4545");
 		}
 		else if(parEvt.getActionCommand().equals("gauche")){
 			panelTimeline.avant();
