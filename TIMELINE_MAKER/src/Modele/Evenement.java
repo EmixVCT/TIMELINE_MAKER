@@ -1,9 +1,65 @@
 package Modele;
 
 public class Evenement {
-
-	public Evenement() {
-		// TODO Auto-generated constructor stub
+	private String chTitre;
+	private Date chDate;
+	private String chDescription;
+	private int chPoids;
+	private String chPhoto;
+	
+	
+	public Evenement(String parT,Date parDate,String parDesc,int parPoids,String parPhoto) {
+		chTitre = parT;
+		chDate = parDate;
+		chDescription = parDesc;
+		chPoids = parPoids;
+		chPhoto = parPhoto;
 	}
+	
+	public String toString() {
+		return "Titre :"+ chTitre+"\nDescription :"+chDescription+"\n la date:"+chDate;
+	}
+
+	public String getChTitre() {
+		return chTitre;
+	}
+
+	public void setChTitre(String chTitre) {
+		this.chTitre = chTitre;
+	}
+
+	public Date getChDate() {
+		return chDate;
+	}
+
+	public void setChDate(Date chDate) {
+		this.chDate = chDate;
+	}
+
+	public String getChDescription() {
+		return chDescription;
+	}
+
+	public void setChDescription(String chDescription) {
+		this.chDescription = chDescription;
+	}
+
+	public int getChPoids() {
+		return chPoids;
+	}
+
+	public void setChPoids(int chPoids) {
+		this.chPoids = chPoids;
+	}
+
+	public String getChPhoto() {
+		return chPhoto;
+	}
+
+	public void setChPhoto(String chPhoto) {
+		this.chPhoto = chPhoto;
+	}
+	
+	
 
 }
