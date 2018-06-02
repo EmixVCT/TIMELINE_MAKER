@@ -27,7 +27,7 @@ public class Timeline {
 	}
 	
 	public String toString() {
-		return " ";
+		return chTitre + " du " + chDateDebut + " au " +chDateFin;
 	}
 	
 	public void ajout(Evenement parEvt) {
@@ -43,7 +43,4 @@ public class Timeline {
 		}
 	}
 	
-	public String toString() {
-		return chTitre + " du " + chDateDebut + " au " +chDateFin;
-	}
 }
