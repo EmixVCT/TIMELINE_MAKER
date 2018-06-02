@@ -42,5 +42,8 @@ public class Timeline {
 			Hash_Evenements.put(annee, liste);
 		}
 	}
-
+	
+	public String toString() {
+		return chTitre + " du " + chDateDebut + " au " +chDateFin;
+	}
 }
