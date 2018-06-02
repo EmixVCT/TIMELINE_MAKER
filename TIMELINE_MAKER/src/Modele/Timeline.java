@@ -15,7 +15,7 @@ public class Timeline {
 	private Date chDateFin;
 	private int chPeriode;
 	private String chAdresseFichier;
-	private HashMap<Integer,ArrayList<Evenement>> Hash_Evenements;
+	private HashMap<Date,ArrayList<Evenement>> Hash_Evenements;
 	
 	public Timeline() {
 		chTitre = "";
@@ -23,7 +23,7 @@ public class Timeline {
 		chDateFin = new Date();
 		chPeriode = 1;
 		chAdresseFichier = "";
-		Hash_Evenements = new HashMap<Integer,ArrayList<Evenement>>();
+		Hash_Evenements = new HashMap<Date,ArrayList<Evenement>>();
 	}
 	public void setTimeline(String parTitre,Date parDebut,Date parFin,int parPeriode,String parLien) {
 		chTitre = parTitre;
@@ -39,19 +39,18 @@ public class Timeline {
 	
 	public void ajout(Evenement parEvt) {
 		Date date = parEvt.getChDate();
-		int annee = date.getAnnee();
-		if (Hash_Evenements.containsKey(annee)){
-			Hash_Evenements.get(annee).add(parEvt);
+		if (Hash_Evenements.containsKey(date)){
+			Hash_Evenements.get(date).add(parEvt);
 		}
 		else{
 			ArrayList <Evenement> liste = new ArrayList();
 			liste.add(parEvt);
-			Hash_Evenements.put(annee, liste);
+			Hash_Evenements.put(date, liste);
 		}
 	}
 	
-	public Collection<Evenement> getEvenement(int parAnnee) {
-		return Hash_Evenements.get(parAnnee);
+	public Collection<Evenement> getEvenement(Date parDate) {
+		return Hash_Evenements.get(parDate);
 	}
 
 	public Date getDateFin() {
@@ -64,5 +63,10 @@ public class Timeline {
 	public String getTitre() {
 		return chTitre;
 	}
-	
+	public HashMap<Date, ArrayList<Evenement>> getHash_Evenements() {
+		return Hash_Evenements;
+	}
+	public int getchPeriode() {
+		return chPeriode;
+	}
 }

@@ -3,12 +3,15 @@ package Vue;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Controleur.Controleur;
+import Modele.Date;
 import Modele.Evenement;
 import Modele.Timeline;
 
@@ -16,6 +19,8 @@ public class PanelTimeline extends JPanel{
 	private Timeline timeline;
 	private PanelTable panelTable;
 	private PanelEvenement[] tabPanelEvenement;
+	private HashMap<Date,PanelEvenement> hashPanelEvenement;
+	
 	private PanelEvenement panelEvenement;
 	
 	private JButton boutonDroite = new JButton(">");
@@ -23,8 +28,10 @@ public class PanelTimeline extends JPanel{
 	
 	private CardLayout gestionnaireEvts;
 	private JPanel panelEvts = new JPanel();
-
-	private static int nbPanelEvenements = 0;
+	
+	private Date dateCourante;
+	private int nbPanelEvenements = 0;
+	
 	public PanelTimeline(Timeline parTimeline,PanelEvenement[] parTabPanelEvenement,PanelTable parPT) {
 		setLayout(new BorderLayout());
 		setBackground(Color.WHITE);
@@ -58,15 +65,32 @@ public class PanelTimeline extends JPanel{
 		this.add(new JLabel(timeline.getTitre(),JLabel.CENTER),BorderLayout.NORTH);
 	}
 	public void addEvenement(Evenement parEvt) {
-
 		tabPanelEvenement[nbPanelEvenements] = new PanelEvenement(parEvt);
 		panelEvts.add(tabPanelEvenement[nbPanelEvenements],parEvt.getChTitre());
 		
+		dateCourante = parEvt.getChDate(); // add dateCourante
 		nbPanelEvenements += 1;
 	}
 	
 	public void showEvenement(Evenement parEvt) {
 		gestionnaireEvts.show(panelEvts,parEvt.getChTitre());
+		dateCourante = parEvt.getChDate(); //add dateCourante
+	}
+
+	public void apres() {
+		HashMap<Date, ArrayList<Evenement>> hashevt = timeline.getHash_Evenements();
+		int anneeMin = timeline.getDateDebut().getAnnee();
+		int anneeMax = timeline.getDateFin().getAnnee();
+		
+		//hashPanelEvenement;
+		
+		
+		
+	}
+
+	public void avant() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

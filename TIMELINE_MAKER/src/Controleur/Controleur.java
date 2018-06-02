@@ -45,6 +45,12 @@ public class Controleur implements ActionListener {
 			panelFormulaireEvenement.reset();	
 			panelTimeline.setTable(timeline);
 		}
+		else if(parEvt.getActionCommand().equals("droite")){
+			panelTimeline.apres();
+		}
+		else if(parEvt.getActionCommand().equals("gauche")){
+			panelTimeline.avant();
+		}
 		
 	}
 

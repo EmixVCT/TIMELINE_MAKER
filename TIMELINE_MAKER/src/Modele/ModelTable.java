@@ -1,6 +1,10 @@
 package Modele;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import javax.swing.table.DefaultTableModel;
 import Modele.Timeline;
@@ -26,21 +30,30 @@ public class ModelTable extends DefaultTableModel{
 		String [] Entete = new String[chNombreCol+1];
 		int j = 0;
 		for(int i = chAnneeDebut ; i <= chAnneeFin;i++) {
-			Entete[j] =  Integer.toString(i);
+			Entete[j] = "";
+			if (j%timeline.getchPeriode()==0) {
+				Entete[j] =  Integer.toString(i);
+			}
 			j++;
 		}
 		
 		this.setColumnIdentifiers(Entete); 
 		
 		//Les evenements 
-		for(int i = chAnneeDebut ; i <= chAnneeFin;i++) {
-			Collection <Evenement> evtsAnnee = timeline.getEvenement(i); // A check
-			if (evtsAnnee != null){
-				for (Evenement evt : evtsAnnee){
-					ajoutEvenement(evt); // 
-				}
+		HashMap<Date,ArrayList<Evenement>> hashevts = timeline.getHash_Evenements();
+				
+		Iterator dates = hashevts.keySet().iterator();
+		Date date;
+		ArrayList<Evenement> listEvts;
+		while(dates.hasNext()) {
+			date = (Date) dates.next();
+			listEvts = hashevts.get(date);
+			for (Evenement evt : listEvts) {
+				ajoutEvenement(evt);
 			}
+			
 		}
+
 	}//constructeur
 
 	public void ajoutEvenement(Evenement parEvt) {
