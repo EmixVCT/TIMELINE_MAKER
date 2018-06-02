@@ -17,6 +17,7 @@ import Controleur.Controleur;
 import Modele.Timeline;
 import Modele.Date;
 import Modele.Evenement;
+import Modele.ExceptionDate;
 
 public class PanelFormulaireEvenement extends JPanel{
 	
@@ -155,7 +156,8 @@ public class PanelFormulaireEvenement extends JPanel{
 	}
 	
 	public Evenement getEvenement(){
-		return null;//new Evenement (getDate(),textTitre.getText(),textLieu.getText());
+		int poids = Integer.parseInt(boxpoids.getSelectedItem().toString());
+		return new Evenement(textTitre.getText(),getDate(),textDescription.getText(),poids,textLienPhoto.getText());
 	}
     
     public void reset(){
@@ -165,6 +167,18 @@ public class PanelFormulaireEvenement extends JPanel{
         this.textTitre.requestFocus() ;
     }
     
+    public Date getDate() {
+    	String jour = boxJour.getSelectedItem().toString();
+    	String mois = boxMois.getSelectedItem().toString();
+    	String annee = boxAnnee.getSelectedItem().toString();
+    	try {
+			Date d1 = new Date(Integer.parseInt(jour),Integer.parseInt(mois),Integer.parseInt(annee));
+	    	return d1;
+		} catch (ExceptionDate e) {
+			e.printStackTrace();
+		}
+		return null;
+    } 
 	
 }
 

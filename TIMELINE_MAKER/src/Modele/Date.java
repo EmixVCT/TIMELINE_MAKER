@@ -115,6 +115,7 @@ public class Date{
 			case 11: chaine += "novembre"; break;
 			case 12: chaine += "Décembre"; break;
 			}	
+		chaine += " " + chAnnee;
 		return chaine;
 	}
 	public int getAnnee() { 

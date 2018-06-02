@@ -3,6 +3,7 @@ package Controleur;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Modele.Evenement;
 import Modele.Timeline;
 import Vue.PanelCreation;
 import Vue.PanelFormulaireEvenement;
@@ -37,8 +38,9 @@ public class Controleur implements ActionListener {
 		}
 		else if(parEvt.getActionCommand().equals("ajout")){
 			//timeline.ajout(panelFormulaireEvenement.getEvenement());
+			Evenement evt = panelFormulaireEvenement.getEvenement();
 			panelFormulaireEvenement.reset();	
-			System.out.println("cfvgbhuj");
+			System.out.println(evt.toString());
 		}
 		
 	}
