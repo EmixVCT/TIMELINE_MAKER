@@ -61,5 +61,8 @@ public class Timeline {
 	public Date getDateDebut() {
 		return chDateDebut;
 	}
+	public String getTitre() {
+		return chTitre;
+	}
 	
 }

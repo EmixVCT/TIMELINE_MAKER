@@ -11,6 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ScrollPaneConstants;
 
+import Modele.Evenement;
 import Modele.ModelTable;
 import Modele.Timeline;
 
@@ -27,8 +28,8 @@ public class PanelTable extends JPanel {
 		modele = new ModelTable(timeline);
 		tableTimeline = new JTable(modele);
 		tableTimeline.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		//tableTimeline.
-		/*tableTimeline.addMouseListener(new MouseAdapter(){
+		
+		tableTimeline.addMouseListener(new MouseAdapter(){
 		
 			public void mouseClicked(MouseEvent evt){
 				JTable table = (JTable)evt.getSource();
@@ -36,16 +37,19 @@ public class PanelTable extends JPanel {
 				Point point= evt.getPoint();
 				int rowIndex = table.rowAtPoint(point);
 				int colIndex = table.columnAtPoint(point);
-				JOptionPane.showMessageDialog(tableTimeline, modele.getValueAt(rowIndex, colIndex));
+				try {
+					//showEvenement((Evenement)modele.getValueAt(rowIndex, colIndex));
+				}catch (Exception e) {
+					System.out.println("Case vide");
+				}
 			}
 
-		});*/
+		});
 		//tableTimeline.setDefaultRenderer(Evenement.class, new CelluleRenderer());
 		JScrollPane scroll = new JScrollPane(tableTimeline, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED );
 		
 		this.add(scroll);
 	}
-
 	public void updateTable(Timeline parTimeline) {
 		ModelTable parModele = new ModelTable(parTimeline);
 		tableTimeline.setModel(parModele);

@@ -4,10 +4,14 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
-public class PanelEvenement extends JPanel{
+import Modele.Evenement;
 
-	public PanelEvenement() {
+public class PanelEvenement extends JPanel{
+	private Evenement chEvenement;
+	
+	public PanelEvenement(Evenement parEvt) {
 		setBackground(Color.darkGray);
+		chEvenement = parEvt;
 	}
 
 }

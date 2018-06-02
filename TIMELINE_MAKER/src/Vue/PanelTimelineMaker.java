@@ -12,17 +12,17 @@ import Controleur.Controleur;
 import Modele.Timeline;
 
 public class PanelTimelineMaker extends JPanel implements ActionListener{
-
+	private final int NBEVTMAX = 100;
 	private CardLayout gestionnaireDeCartes;
 	
 	private Timeline timeline = new Timeline();
 	private PanelFormulaireTimeline panelFormulaireTimeline = new PanelFormulaireTimeline();
 	private PanelFormulaireEvenement panelFormulaireEvenement = new PanelFormulaireEvenement();
 	
-	private PanelEvenement panelEvenement = new PanelEvenement();
 	private PanelTable panelTable = new PanelTable(timeline);
+	private PanelEvenement[] tabPanelEvenement = new PanelEvenement[NBEVTMAX];
 	
-	private PanelTimeline panelTimeline = new PanelTimeline(timeline,panelEvenement,panelTable);
+	private PanelTimeline panelTimeline = new PanelTimeline(timeline,tabPanelEvenement,panelTable);
 	private PanelCreation panelCreation = new PanelCreation(panelFormulaireTimeline,panelFormulaireEvenement);
 	
 	public PanelTimelineMaker() {

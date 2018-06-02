@@ -34,7 +34,8 @@ public class Controleur implements ActionListener {
 	public void actionPerformed(ActionEvent parEvt) {
 		if(parEvt.getActionCommand().equals("cree")){
 			panelFormulaireTimeline.setTimeline(timeline);
-			panelCreation.changerFormulaire();	
+			panelCreation.changerFormulaire();
+			panelTimeline.setTitre();
 			panelTimeline.setTable(timeline);
 			
 		}
