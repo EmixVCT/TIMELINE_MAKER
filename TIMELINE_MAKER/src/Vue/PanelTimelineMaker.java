@@ -19,7 +19,10 @@ public class PanelTimelineMaker extends JPanel implements ActionListener{
 	private PanelFormulaireTimeline panelFormulaireTimeline = new PanelFormulaireTimeline();
 	private PanelFormulaireEvenement panelFormulaireEvenement = new PanelFormulaireEvenement();
 	
-	private PanelTimeline panelTimeline = new PanelTimeline();
+	private PanelEvenement panelEvenement = new PanelEvenement();
+	private PanelTable panelTable = new PanelTable();
+	
+	private PanelTimeline panelTimeline = new PanelTimeline(timeline,panelEvenement,panelTable);
 	private PanelCreation panelCreation = new PanelCreation(panelFormulaireTimeline,panelFormulaireEvenement);
 	
 	public PanelTimelineMaker() {

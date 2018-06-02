@@ -4,10 +4,18 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
-public class PanelTimeline extends JPanel{
+import Modele.Timeline;
 
-	public PanelTimeline() {
+public class PanelTimeline extends JPanel{
+	private Timeline timeline;
+	private PanelEvenement panelEvenement;
+	private PanelTable panelTable;
+	
+	public PanelTimeline(Timeline parTimeline,PanelEvenement parPE,PanelTable parPT) {
 		setBackground(Color.BLACK);
+		timeline = parTimeline;
+		panelEvenement = parPE;
+		panelTable = parPT;
 		}
 
 }
