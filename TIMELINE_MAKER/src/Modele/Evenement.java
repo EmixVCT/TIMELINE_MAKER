@@ -24,42 +24,19 @@ public class Evenement {
 		return chTitre;
 	}
 
-	public void setChTitre(String chTitre) {
-		this.chTitre = chTitre;
-	}
-
 	public Date getChDate() {
 		return chDate;
-	}
-
-	public void setChDate(Date chDate) {
-		this.chDate = chDate;
 	}
 
 	public String getChDescription() {
 		return chDescription;
 	}
 
-	public void setChDescription(String chDescription) {
-		this.chDescription = chDescription;
-	}
-
 	public int getChPoids() {
 		return chPoids;
-	}
-
-	public void setChPoids(int chPoids) {
-		this.chPoids = chPoids;
 	}
 
 	public String getChPhoto() {
 		return chPhoto;
 	}
-
-	public void setChPhoto(String chPhoto) {
-		this.chPhoto = chPhoto;
-	}
-	
-	
-
 }
