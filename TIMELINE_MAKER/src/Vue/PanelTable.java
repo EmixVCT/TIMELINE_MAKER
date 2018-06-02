@@ -27,7 +27,7 @@ public class PanelTable extends JPanel {
 		modele = new ModelTable(timeline);
 		tableTimeline = new JTable(modele);
 		tableTimeline.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		
+		//tableTimeline.
 		/*tableTimeline.addMouseListener(new MouseAdapter(){
 		
 			public void mouseClicked(MouseEvent evt){
@@ -51,10 +51,9 @@ public class PanelTable extends JPanel {
 		
 		tableTimeline.setModel(parModele);
 		
-		tableTimeline.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		JScrollPane scroll = new JScrollPane(tableTimeline, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED );
-		
-		this.add(scroll);
+		//System.out.println(parTimeline.toString());
+		//System.out.println(timeline.toString());
+
 	}
 
 }

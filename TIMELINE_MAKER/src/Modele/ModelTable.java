@@ -23,9 +23,9 @@ public class ModelTable extends DefaultTableModel{
 		this.setColumnCount(chNombreCol);
 		this.setRowCount(chNombreLig);
 		
-		String [] Entete = new String[chNombreCol];
+		String [] Entete = new String[chNombreCol+1];
 		int j = 0;
-		for(int i = chAnneeDebut ; i < chAnneeFin;i++) {
+		for(int i = chAnneeDebut ; i <= chAnneeFin;i++) {
 			Entete[j] =  Integer.toString(i);
 			j++;
 		}

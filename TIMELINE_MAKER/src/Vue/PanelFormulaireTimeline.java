@@ -167,8 +167,8 @@ public class PanelFormulaireTimeline extends JPanel{
     
     public Date getDateDebut() {
     	String jour = boxJourDebut.getSelectedItem().toString();
-    	String mois = boxJourDebut.getSelectedItem().toString();
-    	String annee = boxJourDebut.getSelectedItem().toString();
+    	String mois = boxMoisDebut.getSelectedItem().toString();
+    	String annee = boxAnneeDebut.getSelectedItem().toString();
     	try {
 			Date d1 = new Date(Integer.parseInt(jour),Integer.parseInt(mois),Integer.parseInt(annee));
 	    	return d1;
@@ -179,8 +179,8 @@ public class PanelFormulaireTimeline extends JPanel{
     }
     public Date getDateFin() {
     	String jour = boxJourFin.getSelectedItem().toString();
-    	String mois = boxJourFin.getSelectedItem().toString();
-    	String annee = boxJourFin.getSelectedItem().toString();
+    	String mois = boxMoisFin.getSelectedItem().toString();
+    	String annee = boxAnneeFin.getSelectedItem().toString();
     	try {
 			Date d1 = new Date(Integer.parseInt(jour),Integer.parseInt(mois),Integer.parseInt(annee));
 	    	return d1;
