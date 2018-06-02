@@ -2,6 +2,7 @@ package Vue;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -30,7 +31,18 @@ public class PanelEvenement extends JPanel{
 
 	public String textEvt() {
 		String txt = "<html>\n";
-		txt += "<h4> <i> " + chEvenement.getChDate().toString() + "<i> <h4>";
+		txt += "<h4> <i> " + chEvenement.getChDate().toString() + "<i> <h4>\n";
+		
+		String mots[] = chEvenement.getChDescription().split(" ");
+		int nbMotParLig = 12;
+		int i = 0;
+		for(String mot : mots) {
+			if (i%nbMotParLig == 0) {
+				txt += "<br/>";
+			}
+			txt += mot + " ";
+			i++;
+		}
 		return txt;
 				
 	}
