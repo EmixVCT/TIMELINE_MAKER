@@ -27,7 +27,7 @@ public class Timeline {
 	}
 	
 	public String toString() {
-		return chTitre + " du " + chDateDebut + " au " +chDateFin;
+		return chTitre + " du " + chDateDebut.toString() + " au " +chDateFin.toString();
 	}
 	
 	public void ajout(Evenement parEvt) {
@@ -41,6 +41,10 @@ public class Timeline {
 			liste.add(parEvt);
 			Hash_Evenements.put(annee, liste);
 		}
+	}
+	
+	public Collection<Evenement> getEvenement(int parAnnee) {
+		return Hash_Evenements.get(parAnnee);
 	}
 	
 }
