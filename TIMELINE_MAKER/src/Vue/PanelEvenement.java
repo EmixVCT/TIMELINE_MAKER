@@ -30,7 +30,7 @@ public class PanelEvenement extends JPanel{
 
 	public String textEvt() {
 		String txt = "<html>\n";
-		txt += "<h4> <i> " + Integer.toString(chEvenement.getChDate().getAnnee()) + "<i> <h4>";
+		txt += "<h4> <i> " + chEvenement.getChDate().toString() + "<i> <h4>";
 		return txt;
 				
 	}
