@@ -158,9 +158,6 @@ public class PanelFormulaireTimeline extends JPanel{
 	}
 	
 	
-	public Timeline getTimeline(){
-		return new Timeline(textTitre.getText(),getDateDebut(),getDateFin(),getPeriode(),textLienDossier.getText());
-	}
     
     public void reset(){
     	this.textTitre.setText("") ;
@@ -201,6 +198,11 @@ public class PanelFormulaireTimeline extends JPanel{
 			return 1;
 		}
     }
+
+	public void setTimeline(Timeline parTimeline) {
+		parTimeline.setTimeline(textTitre.getText(),getDateDebut(),getDateFin(),getPeriode(),textLienDossier.getText());
+		
+	}
     
 	
 }

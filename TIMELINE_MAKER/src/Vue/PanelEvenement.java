@@ -1,9 +1,13 @@
 package Vue;
 
-public class PanelEvenement {
+import java.awt.Color;
+
+import javax.swing.JPanel;
+
+public class PanelEvenement extends JPanel{
 
 	public PanelEvenement() {
-		// TODO Auto-generated constructor stub
+		setBackground(Color.darkGray);
 	}
 
 }

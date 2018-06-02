@@ -15,12 +15,12 @@ public class PanelTimelineMaker extends JPanel implements ActionListener{
 
 	private CardLayout gestionnaireDeCartes;
 	
-	private Timeline timeline;
+	private Timeline timeline = new Timeline();
 	private PanelFormulaireTimeline panelFormulaireTimeline = new PanelFormulaireTimeline();
 	private PanelFormulaireEvenement panelFormulaireEvenement = new PanelFormulaireEvenement();
 	
 	private PanelEvenement panelEvenement = new PanelEvenement();
-	private PanelTable panelTable = new PanelTable();
+	private PanelTable panelTable = new PanelTable(timeline);
 	
 	private PanelTimeline panelTimeline = new PanelTimeline(timeline,panelEvenement,panelTable);
 	private PanelCreation panelCreation = new PanelCreation(panelFormulaireTimeline,panelFormulaireEvenement);

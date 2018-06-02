@@ -17,13 +17,20 @@ public class Timeline {
 	private String chAdresseFichier;
 	private HashMap<Integer,ArrayList<Evenement>> Hash_Evenements;
 	
-	public Timeline(String parTitre,Date parDebut,Date parFin,int parPeriode,String parLien) {
+	public Timeline() {
+		chTitre = "";
+		chDateDebut = new Date();
+		chDateFin = new Date();
+		chPeriode = 1;
+		chAdresseFichier = "";
+		Hash_Evenements = new HashMap<Integer,ArrayList<Evenement>>();
+	}
+	public void setTimeline(String parTitre,Date parDebut,Date parFin,int parPeriode,String parLien) {
 		chTitre = parTitre;
 		chDateDebut = parDebut;
 		chDateFin = parFin;
 		chPeriode = parPeriode;
 		chAdresseFichier = parLien;
-		Hash_Evenements = new HashMap<Integer,ArrayList<Evenement>>();
 	}
 	
 	public String toString() {
@@ -45,6 +52,14 @@ public class Timeline {
 	
 	public Collection<Evenement> getEvenement(int parAnnee) {
 		return Hash_Evenements.get(parAnnee);
+	}
+
+	public Date getDateFin() {
+		return chDateFin;
+	}
+	
+	public Date getDateDebut() {
+		return chDateDebut;
 	}
 	
 }
