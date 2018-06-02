@@ -17,7 +17,7 @@ public class Evenement {
 	}
 	
 	public String toString() {
-		return "Titre :"+ chTitre+"\nDescription :"+chDescription+"\n la date:"+chDate;
+		return "Titre :"+ chTitre+" Description :"+chDescription+" la date:"+chDate;
 	}
 
 	public String getChTitre() {
