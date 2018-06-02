@@ -31,8 +31,8 @@ public class PanelEvenement extends JPanel{
 
 	public String textEvt() {
 		String txt = "<html>\n";
-		txt += "<h4> <i> " + chEvenement.getChDate().toString() + "<i> <h4>\n";
-		
+		txt += "<h4> <i> " + chEvenement.getChDate().toString() + "<i> </h4>\n";
+		txt += "<h3> " + chEvenement.getChTitre()+"</h3>";
 		String mots[] = chEvenement.getChDescription().split(" ");
 		int nbMotParLig = 12;
 		int i = 0;
@@ -43,6 +43,7 @@ public class PanelEvenement extends JPanel{
 			txt += mot + " ";
 			i++;
 		}
+		txt += "</html>";
 		return txt;
 				
 	}
