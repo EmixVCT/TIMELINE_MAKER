@@ -7,6 +7,7 @@ import Modele.Evenement;
 import Modele.ExceptionAjoutEvenement;
 import Modele.ExceptionCreationTimeline;
 import Modele.Timeline;
+import Vue.FenetreTimeline;
 import Vue.PanelCreation;
 import Vue.PanelFormulaireEvenement;
 import Vue.PanelFormulaireTimeline;
@@ -41,6 +42,7 @@ public class Controleur implements ActionListener {
 				panelCreation.changerFormulaire();
 				panelTimeline.setTitre();
 				panelTimeline.setTable(timeline);
+				FenetreTimeline.enableJMenuItemTimeline();
 			} catch (ExceptionCreationTimeline e) {
 				e.printStackTrace();
 			}	

@@ -10,6 +10,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 public class FenetreTimeline extends JFrame {
+	private static JMenuItem interfaceTimeline = new JMenuItem("Timeline");
+	private static JMenuItem interfaceCreation = new JMenuItem("Creation");
+	private static JMenuItem itemFermer = new JMenuItem("Fermer");
 
 	public FenetreTimeline(String parTitre) {
 		super(parTitre);
@@ -23,26 +26,31 @@ public class FenetreTimeline extends JFrame {
 		PanelTimelineMaker contentPane = new PanelTimelineMaker();
 		
 		//ajout d'un item � la barre des menus
-		JMenuItem interfaceTimeline = new JMenuItem("Timeline");
 		interfaceTimeline.addActionListener(contentPane);
 		interfaceTimeline.setActionCommand("timeline");
+		interfaceTimeline.setEnabled(false);
+		//interfaceTimeline.setBackground(new Color(128, 208, 208));
+
 		
-		JMenuItem interfaceCreation = new JMenuItem("Creation");
 		interfaceCreation.addActionListener(contentPane);
 		interfaceCreation.setActionCommand("creation");
+		//interfaceCreation.setBackground(new Color(128, 208, 208));
+
 		
-		JMenuItem itemFermer = new JMenuItem("Fermer");
 		itemFermer.addActionListener(contentPane);
 		itemFermer.setActionCommand("fermer");
+		//itemFermer.setBackground(new Color(128, 208, 208));
+
 		
 		menuBar.add(interfaceTimeline,BorderLayout.WEST);
 		menuBar.add(interfaceCreation,BorderLayout.CENTER);
 		menuBar.add(itemFermer,BorderLayout.EAST);
-				
+		
 		setContentPane(contentPane);
-		setBackground(Color.LIGHT_GRAY);
+		setBackground(new Color(128, 208, 208));
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(900,500);
+		setSize(1000,600);
+		setResizable(false);
 		setVisible(true);
 		setLocation(200,100);
 		}
@@ -56,6 +64,11 @@ public class FenetreTimeline extends JFrame {
 	public Insets getInsets (){
 		return new Insets (40,20,20,20) ; // HAUT,GAUCHE,BAS,DROITE
 		}
+
+	public static void enableJMenuItemTimeline() {
+		interfaceTimeline.setEnabled(true);
+		
+	}
 
 }
 

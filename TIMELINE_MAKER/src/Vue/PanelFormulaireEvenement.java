@@ -37,7 +37,7 @@ public class PanelFormulaireEvenement extends JPanel{
 	
 	public PanelFormulaireEvenement(){
 		
-		setBackground(new Color(186,166,79));
+		setBackground(new Color(128, 208, 208));
 		titreFenetre = new JLabel("Ajout d'un evenement");
 		
 		GridBagLayout gestionnaire = new GridBagLayout();

@@ -2,6 +2,7 @@ package Vue;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Insets;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -9,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.border.EmptyBorder;
 
 import Modele.Evenement;
 
@@ -18,15 +20,17 @@ public class PanelEvenement extends JPanel{
 	private JLabel text;
 	
 	public PanelEvenement(Evenement parEvt) {
-		setBackground(Color.WHITE);
-		setLayout(new BorderLayout());
-		
 		chEvenement = parEvt;
-		
+
+		setBackground(new Color(128, 208, 208));
+		setLayout(new BorderLayout());
+				
 		image = new JLabel( new ImageIcon(chEvenement.getChPhoto()));
 		this.add(image,BorderLayout.WEST); 
 		
 		text = new JLabel(textEvt());
+		text.setBorder(new EmptyBorder(0, 10, 0, 10));
+
 		JScrollPane scroll = new JScrollPane(text,ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED , ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED );
 		this.add(scroll,BorderLayout.CENTER);
 

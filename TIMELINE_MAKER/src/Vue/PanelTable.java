@@ -29,7 +29,7 @@ public class PanelTable extends JPanel {
 	
 	public PanelTable(Timeline parTimeline,CardLayout parGestionnaireEvts,JPanel parPanelEvts) {
 		setLayout(new BorderLayout());
-		setBackground(Color.CYAN);
+		setBackground(new Color(128, 208, 208));
 		timeline = parTimeline;
 		gestionnaireEvts = parGestionnaireEvts;
 		panelEvts = parPanelEvts;

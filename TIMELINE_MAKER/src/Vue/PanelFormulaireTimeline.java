@@ -37,7 +37,7 @@ public class PanelFormulaireTimeline extends JPanel{
 	
 	public PanelFormulaireTimeline(){
 		
-		setBackground(new Color(186,166,79));
+		setBackground(new Color(128, 208, 208));
 		titreFenetre = new JLabel("Création d'une Timeline");
 		
 		GridBagLayout gestionnaire = new GridBagLayout();

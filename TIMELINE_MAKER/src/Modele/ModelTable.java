@@ -1,5 +1,6 @@
 package Modele;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -17,7 +18,7 @@ public class ModelTable extends DefaultTableModel{
 	private Timeline timeline;
 	
 	public ModelTable(Timeline partimeline){
-		
+
 		timeline = partimeline;
 		chAnneeDebut = timeline.getDateDebut().getAnnee();
 		chAnneeFin = timeline.getDateFin().getAnnee();

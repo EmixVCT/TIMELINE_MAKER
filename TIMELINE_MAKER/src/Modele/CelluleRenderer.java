@@ -2,8 +2,6 @@ package Modele;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -34,7 +32,7 @@ public class CelluleRenderer extends JLabel implements TableCellRenderer{
 		if(valeur == null){
 			setText("");
 			setIcon(null);
-			setBackground(new Color(255,255,255));
+			setBackground(new Color(255, 255, 255));
 			}
 		else{
 			Evenement evt =(Evenement)valeur;

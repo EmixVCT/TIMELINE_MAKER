@@ -3,7 +3,6 @@ package Vue;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -14,16 +13,11 @@ import javax.swing.JPanel;
 import Controleur.Controleur;
 import Modele.Date;
 import Modele.Evenement;
-import Modele.ExceptionDate;
 import Modele.Timeline;
 
 public class PanelTimeline extends JPanel{
 	private Timeline timeline;
 	private PanelTable panelTable;
-	private final int NBEVTMAX = 100;
-	private PanelEvenement[] tabPanelEvenement;
-	
-	private PanelEvenement panelEvenement;
 	
 	private JButton boutonDroite = new JButton(">");
 	private JButton boutonGauche = new JButton("<");
@@ -36,15 +30,16 @@ public class PanelTimeline extends JPanel{
 	
 	public PanelTimeline(Timeline parTimeline) {
 		setLayout(new BorderLayout());
-		setBackground(Color.WHITE);
+		setBackground(new Color(128, 208, 208));
 		
 		gestionnaireEvts = new CardLayout(5,5);
 		panelEvts.setLayout(gestionnaireEvts);
+		panelEvts.setBackground(new Color(128, 208, 208));
+
 		this.add(panelEvts,BorderLayout.CENTER);
 		
 		timeline = parTimeline;
 		panelTable = new PanelTable(timeline, gestionnaireEvts,panelEvts);
-		tabPanelEvenement = new PanelEvenement[NBEVTMAX];
 		
 		boutonDroite.setActionCommand("droite");
 		boutonGauche.setActionCommand("gauche");
@@ -53,8 +48,7 @@ public class PanelTimeline extends JPanel{
 		this.add(boutonDroite,BorderLayout.EAST);
 		this.add(boutonGauche,BorderLayout.WEST);
 		
-
-
+		panelEvts.add(new JLabel("<html><h1>Entrez des Evenements</h1></html>",JLabel.CENTER));
 		}
 	
 	public void enregistreEcouteur(Controleur parC) {
@@ -66,14 +60,17 @@ public class PanelTimeline extends JPanel{
 		panelTable.updateTable(parTimeline);
 	}
 	public void setTitre(){
-		this.add(new JLabel(timeline.getTitre(),JLabel.CENTER),BorderLayout.NORTH);
+		String titre = "<html><h1>"+timeline.getTitre()+"</h1></html>";
+		JLabel label = new JLabel(titre,JLabel.CENTER);
+		this.add(label,BorderLayout.NORTH);
 	}
 	public void addEvenement(Evenement parEvt) {
-		tabPanelEvenement[nbPanelEvenements] = new PanelEvenement(parEvt);
-		panelEvts.add(tabPanelEvenement[nbPanelEvenements],parEvt.getChTitre());
+		panelEvts.add(new PanelEvenement(parEvt),parEvt.getChTitre());
 		
-		if (nbPanelEvenements ==0)
-			dateCourante = parEvt.getChDate(); // add dateCourante
+		if (nbPanelEvenements ==0) {
+			showEvenement(parEvt);
+			dateCourante = parEvt.getChDate(); //add dateCourante
+		}
 		nbPanelEvenements += 1;
 
 	}
@@ -96,9 +93,7 @@ public class PanelTimeline extends JPanel{
 			date = (Date) dates.next();
 			evt = hashevts.get(date);
 			if (evt.getChDate().compareTo(dateCourante) > 0 && evt.getChDate().compareTo(tamp) <= 0)
-				tamp = evt.getChDate();
-			
-			
+				tamp = evt.getChDate();	
 		}
 		try {
 			showEvenement(timeline.getEvenement(tamp));
