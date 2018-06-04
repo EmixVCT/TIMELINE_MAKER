@@ -1,6 +1,7 @@
 package Vue;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -23,18 +24,23 @@ public class PanelTable extends JPanel {
 	private ModelTable modele;
 	private JTable tableTimeline;
 	private Timeline timeline;
+	private CardLayout gestionnaireEvts;
+	private JPanel panelEvts;
 	
-	public PanelTable(Timeline parTimeline) {
+	public PanelTable(Timeline parTimeline,CardLayout parGestionnaireEvts,JPanel parPanelEvts) {
 		setLayout(new BorderLayout());
 		setBackground(Color.CYAN);
 		timeline = parTimeline;
+		gestionnaireEvts = parGestionnaireEvts;
+		panelEvts = parPanelEvts;
 		
 		modele = new ModelTable(timeline);
 		tableTimeline = new JTable(modele);
 		tableTimeline.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tableTimeline.getTableHeader().setReorderingAllowed(false);
 		tableTimeline.getTableHeader().setResizingAllowed(false);
-		tableTimeline.setPreferredScrollableViewportSize(new Dimension(800,80));
+		tableTimeline.setPreferredScrollableViewportSize(new Dimension(800,50*4));
+		tableTimeline.setRowHeight(50);		
 		
 		tableTimeline.addMouseListener(new MouseAdapter(){
 		
@@ -44,8 +50,11 @@ public class PanelTable extends JPanel {
 				Point point= evt.getPoint();
 				int rowIndex = table.rowAtPoint(point);
 				int colIndex = table.columnAtPoint(point);
-				JOptionPane.showMessageDialog(tableTimeline, modele.getValueAt(rowIndex, colIndex));
-			}
+				if (modele.getValueAt(rowIndex, colIndex) != null) {
+					Evenement evt1 = (Evenement) modele.getValueAt(rowIndex, colIndex);
+					gestionnaireEvts.show(panelEvts, evt1.getChTitre());
+					}
+				}
 
 		});
 		tableTimeline.setDefaultRenderer(Evenement.class, new CelluleRenderer(timeline));
@@ -56,8 +65,6 @@ public class PanelTable extends JPanel {
 	public void updateTable(Timeline parTimeline) {
 		ModelTable parModele = new ModelTable(parTimeline);
 		tableTimeline.setModel(parModele);
-
-
 	}
 
 }

@@ -20,6 +20,7 @@ import Modele.Timeline;
 public class PanelTimeline extends JPanel{
 	private Timeline timeline;
 	private PanelTable panelTable;
+	private final int NBEVTMAX = 100;
 	private PanelEvenement[] tabPanelEvenement;
 	
 	private PanelEvenement panelEvenement;
@@ -33,13 +34,17 @@ public class PanelTimeline extends JPanel{
 	private Date dateCourante;
 	private int nbPanelEvenements = 0;
 	
-	public PanelTimeline(Timeline parTimeline,PanelEvenement[] parTabPanelEvenement,PanelTable parPT) {
+	public PanelTimeline(Timeline parTimeline) {
 		setLayout(new BorderLayout());
 		setBackground(Color.WHITE);
 		
+		gestionnaireEvts = new CardLayout(5,5);
+		panelEvts.setLayout(gestionnaireEvts);
+		this.add(panelEvts,BorderLayout.CENTER);
+		
 		timeline = parTimeline;
-		panelTable = parPT;
-		tabPanelEvenement = parTabPanelEvenement;
+		panelTable = new PanelTable(timeline, gestionnaireEvts,panelEvts);
+		tabPanelEvenement = new PanelEvenement[NBEVTMAX];
 		
 		boutonDroite.setActionCommand("droite");
 		boutonGauche.setActionCommand("gauche");
@@ -48,9 +53,7 @@ public class PanelTimeline extends JPanel{
 		this.add(boutonDroite,BorderLayout.EAST);
 		this.add(boutonGauche,BorderLayout.WEST);
 		
-		gestionnaireEvts = new CardLayout(5,5);
-		panelEvts.setLayout(gestionnaireEvts);
-		this.add(panelEvts,BorderLayout.CENTER);
+
 
 		}
 	
@@ -117,8 +120,6 @@ public class PanelTimeline extends JPanel{
 			evt = hashevts.get(date);
 			if (evt.getChDate().compareTo(dateCourante) < 0 && evt.getChDate().compareTo(tamp) >= 0)
 				tamp = evt.getChDate();
-			
-			
 		}
 		try {
 			showEvenement(timeline.getEvenement(tamp));
