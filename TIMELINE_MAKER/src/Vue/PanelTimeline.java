@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import Controleur.Controleur;
 import Modele.Date;
 import Modele.Evenement;
+import Modele.ExceptionDate;
 import Modele.Timeline;
 
 public class PanelTimeline extends JPanel{
@@ -68,9 +69,9 @@ public class PanelTimeline extends JPanel{
 		tabPanelEvenement[nbPanelEvenements] = new PanelEvenement(parEvt);
 		panelEvts.add(tabPanelEvenement[nbPanelEvenements],parEvt.getChTitre());
 		
-		dateCourante = parEvt.getChDate(); // add dateCourante
+		if (nbPanelEvenements ==0)
+			dateCourante = parEvt.getChDate(); // add dateCourante
 		nbPanelEvenements += 1;
-		System.out.println(tabPanelEvenement.toString());
 
 	}
 	
@@ -81,31 +82,48 @@ public class PanelTimeline extends JPanel{
 
 	public void apres() {		
 		//Les evenements 
-		HashMap<Date,ArrayList<Evenement>> hashevts = timeline.getHash_Evenements();
-		Iterator dates = hashevts.keySet().iterator();
-		Date date;
-		ArrayList<Evenement> listEvts;
+		HashMap<Date,Evenement> hashevts = timeline.getHash_Evenements();
+		Iterator<Date> dates = hashevts.keySet().iterator();
 		
+		Date date;
+		Evenement evt = null;
 		Date tamp = timeline.getDateFin();
+		
 		while(dates.hasNext()) {
 			date = (Date) dates.next();
-			listEvts = hashevts.get(date);
-			for (Evenement evt : listEvts) {
-				if (evt.getChDate().compareTo(dateCourante) > 0) {
-					if (evt.getChDate().compareTo(tamp)>0)
-						tamp = evt.getChDate();
-				}
-			}
+			evt = hashevts.get(date);
+			if (evt.getChDate().compareTo(dateCourante) > 0 && evt.getChDate().compareTo(tamp) <= 0)
+				tamp = evt.getChDate();
+			
+			
 		}
-		ArrayList<Evenement> titres = hashevts.get(tamp);
-		for(Evenement evt : titres) {
-			showEvenement(evt);
+		try {
+			showEvenement(timeline.getEvenement(tamp));
+		}catch (Exception e) {
 		}
 	}
 
-	public void avant() {
-		gestionnaireEvts.previous(panelEvts);
-
+	public void avant() {		
+		//Les evenements 
+		HashMap<Date,Evenement> hashevts = timeline.getHash_Evenements();
+		Iterator<Date> dates = hashevts.keySet().iterator();
+		
+		Date date;
+		Evenement evt = null;
+		Date tamp = timeline.getDateDebut();
+		
+		while(dates.hasNext()) {
+			date = (Date) dates.next();
+			evt = hashevts.get(date);
+			if (evt.getChDate().compareTo(dateCourante) < 0 && evt.getChDate().compareTo(tamp) >= 0)
+				tamp = evt.getChDate();
+			
+			
+		}
+		try {
+			showEvenement(timeline.getEvenement(tamp));
+		}catch (Exception e) {
+		}	
 	}
 
 }

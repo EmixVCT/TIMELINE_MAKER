@@ -40,17 +40,16 @@ public class ModelTable extends DefaultTableModel{
 		this.setColumnIdentifiers(Entete); 
 		
 		//Les evenements 
-		HashMap<Date,ArrayList<Evenement>> hashevts = timeline.getHash_Evenements();
+		HashMap<Date,Evenement> hashevts = timeline.getHash_Evenements();
 				
 		Iterator dates = hashevts.keySet().iterator();
 		Date date;
-		ArrayList<Evenement> listEvts;
+		Evenement evt;
 		while(dates.hasNext()) {
 			date = (Date) dates.next();
-			listEvts = hashevts.get(date);
-			for (Evenement evt : listEvts) {
-				ajoutEvenement(evt);
-			}
+			evt = hashevts.get(date);
+			ajoutEvenement(evt);
+
 		}
 
 	}//constructeur

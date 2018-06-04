@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import Modele.Date;
 import Modele.Evenement;
@@ -15,7 +16,7 @@ public class Timeline {
 	private Date chDateFin;
 	private int chPeriode;
 	private String chAdresseFichier;
-	private HashMap<Date,ArrayList<Evenement>> Hash_Evenements;
+	private HashMap<Date,Evenement> Hash_Evenements;
 	
 	public Timeline() {
 		chTitre = "";
@@ -23,7 +24,7 @@ public class Timeline {
 		chDateFin = new Date();
 		chPeriode = 1;
 		chAdresseFichier = "";
-		Hash_Evenements = new HashMap<Date,ArrayList<Evenement>>();
+		Hash_Evenements = new HashMap<Date,Evenement>();
 	}
 	public void setTimeline(String parTitre,Date parDebut,Date parFin,int parPeriode,String parLien) {
 		chTitre = parTitre;
@@ -39,17 +40,10 @@ public class Timeline {
 	
 	public void ajout(Evenement parEvt) {
 		Date date = parEvt.getChDate();
-		if (Hash_Evenements.containsKey(date)){
-			Hash_Evenements.get(date).add(parEvt);
-		}
-		else{
-			ArrayList <Evenement> liste = new ArrayList();
-			liste.add(parEvt);
-			Hash_Evenements.put(date, liste);
-		}
+		Hash_Evenements.put(date, parEvt);
 	}
 	
-	public Collection<Evenement> getEvenement(Date parDate) {
+	public Evenement getEvenement(Date parDate) {
 		return Hash_Evenements.get(parDate);
 	}
 
@@ -63,10 +57,41 @@ public class Timeline {
 	public String getTitre() {
 		return chTitre;
 	}
-	public HashMap<Date, ArrayList<Evenement>> getHash_Evenements() {
+	public HashMap<Date, Evenement> getHash_Evenements() {
 		return Hash_Evenements;
 	}
 	public int getchPeriode() {
 		return chPeriode;
+	}
+	
+	public Evenement getPremierEvenement() {
+		Iterator<Date> dates = Hash_Evenements.keySet().iterator();
+		Date date;
+		Date tamp = chDateFin;
+		
+		Evenement evt;
+		while(dates.hasNext()) {
+			date = (Date) dates.next();
+			if (date.compareTo(tamp) < 1) {
+				tamp = date;
+			}
+		}
+		evt = Hash_Evenements.get(tamp);
+		return evt;
+	}
+	public Evenement getDernierEvenement() {
+		Iterator<Date> dates = Hash_Evenements.keySet().iterator();
+		Date date;
+		Date tamp = chDateDebut;
+		
+		Evenement evt;
+		while(dates.hasNext()) {
+			date = (Date) dates.next();
+			if (date.compareTo(tamp) > 1) {
+				tamp = date;
+			}
+		}
+		evt = Hash_Evenements.get(tamp);
+		return evt;
 	}
 }

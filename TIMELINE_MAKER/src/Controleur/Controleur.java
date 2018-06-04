@@ -49,7 +49,6 @@ public class Controleur implements ActionListener {
 		}
 		else if(parEvt.getActionCommand().equals("droite")){
 			panelTimeline.apres();
-			System.out.println("4545");
 		}
 		else if(parEvt.getActionCommand().equals("gauche")){
 			panelTimeline.avant();
