@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -17,6 +18,7 @@ import Controleur.Controleur;
 import Modele.Timeline;
 import Modele.Date;
 import Modele.Evenement;
+import Modele.ExceptionAjoutEvenement;
 import Modele.ExceptionDate;
 
 public class PanelFormulaireEvenement extends JPanel{
@@ -80,24 +82,24 @@ public class PanelFormulaireEvenement extends JPanel{
 
         //JComboBox Jours
 		contraintes.gridx =1 ;
-		String jours[] = {"1","2","3","4","5","6","7","8","9"};
+		String jours[] = getListJour();
         boxJour = new JComboBox(jours) ;
-        boxJour.setSelectedItem(jours[0]);;
+        boxJour.setSelectedItem(Integer.toString(new Date().getJour()));
 		this.add(boxJour, contraintes);
 		
         //JComboBox Mois
 		contraintes.gridx =2 ;
 		String mois[] = {"1","2","3","4","5","6","7","8","9","10","11","12"};
         boxMois = new JComboBox(mois) ;
-        boxMois.setSelectedItem(mois[0]);;
+        boxMois.setSelectedItem(Integer.toString(new Date().getMois()));
 		this.add(boxMois, contraintes);
 		
         //JComboBox Année
 		contraintes.gridx =3 ;
 		contraintes.gridwidth = 2;
-		String annee[] = {"1999","2001","2002","2003","2004","2005","2006","2007","2008"};
-        boxAnnee = new JComboBox(annee) ;
-        boxAnnee.setSelectedItem(annee[0]);;
+		ArrayList<String> annee = getArrayListAnnee();
+        boxAnnee = new JComboBox(annee.toArray()) ;
+        boxAnnee.setSelectedItem(Integer.toString(new Date().getAnnee()));
 		this.add(boxAnnee, contraintes);
 		
 		
@@ -155,9 +157,13 @@ public class PanelFormulaireEvenement extends JPanel{
 		ajoutEvt.addActionListener(parC);
 	}
 	
-	public Evenement getEvenement(){
-		int poids = Integer.parseInt(boxpoids.getSelectedItem().toString());
-		return new Evenement(textTitre.getText(),getDate(),textDescription.getText(),poids,textLienPhoto.getText());
+	public Evenement getEvenement() throws ExceptionAjoutEvenement{
+		if (textTitre.getText().compareTo("")==0) {
+			throw new ExceptionAjoutEvenement("Vous devez obligatoirement donnée un titre a l'evenement");
+		}else {
+			int poids = Integer.parseInt(boxpoids.getSelectedItem().toString());
+			return new Evenement(textTitre.getText(),getDate(),textDescription.getText(),poids,textLienPhoto.getText());
+		}
 	}
     
     public void reset(){
@@ -179,6 +185,21 @@ public class PanelFormulaireEvenement extends JPanel{
 		}
 		return null;
     } 
+	public String[] getListJour() {
+		String[] listJour = new String[31];
+		for(int i = 1;i<=31;i++) {
+			listJour[i-1] = Integer.toString(i);
+		}
+		return listJour;
+	}
+	
+	private ArrayList<String> getArrayListAnnee() {
+		ArrayList<String> listAnnee = new ArrayList<String>();
+		for(int i = 0; i<=new Date().getAnnee();i++) {
+			listAnnee.add(Integer.toString(i));
+		}
+		return listAnnee;
+	}
 	
 }
 

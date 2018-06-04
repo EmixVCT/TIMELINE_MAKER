@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -80,24 +81,24 @@ public class PanelFormulaireTimeline extends JPanel{
 
         //JComboBox Jours debut
 		contraintes.gridx =1 ;
-		String jours[] = {"1","2","3","4","5","6","7","8","9"};
+		String jours[] = getListJour();
         boxJourDebut = new JComboBox(jours) ;
-        boxJourDebut.setSelectedItem(jours[0]);;
+        boxJourDebut.setSelectedItem(Integer.toString(new Date().getJour()));
 		this.add(boxJourDebut, contraintes);
 		
         //JComboBox Mois debut
 		contraintes.gridx =2 ;
 		String mois[] = {"1","2","3","4","5","6","7","8","9","10","11","12"};
         boxMoisDebut = new JComboBox(mois) ;
-        boxMoisDebut.setSelectedItem(mois[0]);;
+        boxMoisDebut.setSelectedItem(Integer.toString(new Date().getMois()));
 		this.add(boxMoisDebut, contraintes);
 		
         //JComboBox Année debut
 		contraintes.gridx =3 ;
 		contraintes.gridwidth = 2;
-		String annee[] = {"1999","2001","2002","2003","2004","2005","2006","2007","2008"};
-        boxAnneeDebut = new JComboBox(annee) ;
-        boxAnneeDebut.setSelectedItem(annee[0]);;
+		ArrayList<String> annee = getArrayListAnnee();
+        boxAnneeDebut = new JComboBox(annee.toArray()) ;
+        boxAnneeDebut.setSelectedItem(Integer.toString(new Date().getAnnee()));
 		this.add(boxAnneeDebut, contraintes);
 		
 		// �tiquette "Date FIN"
@@ -111,20 +112,20 @@ public class PanelFormulaireTimeline extends JPanel{
         //JComboBox Jours FIN
 		contraintes.gridx =1 ;
         boxJourFin = new JComboBox(jours) ;
-        boxJourFin.setSelectedItem(jours[0]);;
+        boxJourFin.setSelectedItem(Integer.toString(new Date().getJour()));
 		this.add(boxJourFin, contraintes);
 		
         //JComboBox Mois FIN
 		contraintes.gridx =2 ;
         boxMoisFin = new JComboBox(mois) ;
-        boxMoisFin.setSelectedItem(mois[0]);;
+        boxMoisFin.setSelectedItem(Integer.toString(new Date().getMois()));
 		this.add(boxMoisFin, contraintes);
 		
         //JComboBox Année FIN
 		contraintes.gridx =3 ;
 		contraintes.gridwidth = 2;
-		boxAnneeFin = new JComboBox(annee) ;
-		boxAnneeFin.setSelectedItem(annee[0]);;
+		boxAnneeFin = new JComboBox(annee.toArray()) ;
+		boxAnneeFin.setSelectedItem(Integer.toString(new Date().getAnnee()));
 		this.add(boxAnneeFin, contraintes);
 		
 		//étiquette periode
@@ -153,6 +154,7 @@ public class PanelFormulaireTimeline extends JPanel{
 		
 		
 	}
+
 
 	public void enregistreEcouteur(Controleur parC){
 		creeTimeline.addActionListener(parC);
@@ -211,6 +213,22 @@ public class PanelFormulaireTimeline extends JPanel{
 		String lien = textLienDossier.getText();
 		parTimeline.setTimeline(titre,debut,fin,periode,lien);
 		
+	}
+	
+	public String[] getListJour() {
+		String[] listJour = new String[31];
+		for(int i = 1;i<=31;i++) {
+			listJour[i-1] = Integer.toString(i);
+		}
+		return listJour;
+	}
+	
+	private ArrayList<String> getArrayListAnnee() {
+		ArrayList<String> listAnnee = new ArrayList<String>();
+		for(int i = 0; i<=new Date().getAnnee();i++) {
+			listAnnee.add(Integer.toString(i));
+		}
+		return listAnnee;
 	}
     
 	
