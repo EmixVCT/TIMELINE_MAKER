@@ -39,7 +39,7 @@ public class PanelTimeline extends JPanel{
 		this.add(panelEvts,BorderLayout.CENTER);
 		
 		timeline = parTimeline;
-		panelTable = new PanelTable(timeline, gestionnaireEvts,panelEvts);
+		panelTable = new PanelTable(timeline, gestionnaireEvts,panelEvts,this);
 		
 		boutonDroite.setActionCommand("droite");
 		boutonGauche.setActionCommand("gauche");
@@ -120,6 +120,10 @@ public class PanelTimeline extends JPanel{
 			showEvenement(timeline.getEvenement(tamp));
 		}catch (Exception e) {
 		}	
+	}
+	
+	public void setDateCourante(Date parDate) {
+		dateCourante = parDate;
 	}
 
 }

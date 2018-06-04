@@ -29,17 +29,17 @@ public class FenetreTimeline extends JFrame {
 		interfaceTimeline.addActionListener(contentPane);
 		interfaceTimeline.setActionCommand("timeline");
 		interfaceTimeline.setEnabled(false);
-		//interfaceTimeline.setBackground(new Color(128, 208, 208));
+		interfaceTimeline.setBackground(new Color(255, 255, 255));
 
 		
 		interfaceCreation.addActionListener(contentPane);
 		interfaceCreation.setActionCommand("creation");
-		//interfaceCreation.setBackground(new Color(128, 208, 208));
+		interfaceCreation.setBackground(new Color(255, 255, 255));
 
 		
 		itemFermer.addActionListener(contentPane);
 		itemFermer.setActionCommand("fermer");
-		//itemFermer.setBackground(new Color(128, 208, 208));
+		itemFermer.setBackground(new Color(255, 255, 255));
 
 		
 		menuBar.add(interfaceTimeline,BorderLayout.WEST);
@@ -62,7 +62,7 @@ public class FenetreTimeline extends JFrame {
 	
 	
 	public Insets getInsets (){
-		return new Insets (40,20,20,20) ; // HAUT,GAUCHE,BAS,DROITE
+		return new Insets (30,5,5,5) ; // HAUT,GAUCHE,BAS,DROITE
 		}
 
 	public static void enableJMenuItemTimeline() {

@@ -26,13 +26,15 @@ public class PanelTable extends JPanel {
 	private Timeline timeline;
 	private CardLayout gestionnaireEvts;
 	private JPanel panelEvts;
+	private PanelTimeline panelTimeline;
 	
-	public PanelTable(Timeline parTimeline,CardLayout parGestionnaireEvts,JPanel parPanelEvts) {
+	public PanelTable(Timeline parTimeline,CardLayout parGestionnaireEvts,JPanel parPanelEvts,PanelTimeline parPanelTimeline) {
 		setLayout(new BorderLayout());
 		setBackground(new Color(128, 208, 208));
 		timeline = parTimeline;
 		gestionnaireEvts = parGestionnaireEvts;
 		panelEvts = parPanelEvts;
+		panelTimeline = parPanelTimeline;
 		
 		modele = new ModelTable(timeline);
 		tableTimeline = new JTable(modele);
@@ -53,6 +55,7 @@ public class PanelTable extends JPanel {
 				if (modele.getValueAt(rowIndex, colIndex) != null) {
 					Evenement evt1 = (Evenement) modele.getValueAt(rowIndex, colIndex);
 					gestionnaireEvts.show(panelEvts, evt1.getChTitre());
+					panelTimeline.setDateCourante(evt1.getChDate());
 					}
 				}
 
