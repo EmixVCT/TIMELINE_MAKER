@@ -38,9 +38,14 @@ public class Timeline {
 		return chTitre + " du " + chDateDebut.toString() + " au " +chDateFin.toString();
 	}
 	
-	public void ajout(Evenement parEvt) {
-		Date date = parEvt.getChDate();
-		Hash_Evenements.put(date, parEvt);
+	public void ajout(Evenement parEvt) throws ExceptionAjoutEvenement{
+		Date dateEvt = parEvt.getChDate();
+		if (dateEvt.compareTo(chDateDebut) >= 0 && dateEvt.compareTo(chDateFin) <= 0) {
+			Date date = parEvt.getChDate();
+			Hash_Evenements.put(date, parEvt);
+		}
+		else
+			throw new ExceptionAjoutEvenement("La date de l'evenement doit etre comprise entre la date de debut et la date de fin");
 	}
 	
 	public Evenement getEvenement(Date parDate) {

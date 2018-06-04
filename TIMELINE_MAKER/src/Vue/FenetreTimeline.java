@@ -1,6 +1,8 @@
 package Vue;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.GridLayout;
 import java.awt.Insets;
 
 import javax.swing.JFrame;
@@ -12,11 +14,13 @@ public class FenetreTimeline extends JFrame {
 	public FenetreTimeline(String parTitre) {
 		super(parTitre);
 		
-		PanelTimelineMaker contentPane = new PanelTimelineMaker();
 		
 		//barre des menus
 		JMenuBar menuBar = new JMenuBar();
+		menuBar.setLayout(new BorderLayout());
 		this.setJMenuBar(menuBar);
+		
+		PanelTimelineMaker contentPane = new PanelTimelineMaker();
 		
 		//ajout d'un item � la barre des menus
 		JMenuItem interfaceTimeline = new JMenuItem("Timeline");
@@ -31,9 +35,9 @@ public class FenetreTimeline extends JFrame {
 		itemFermer.addActionListener(contentPane);
 		itemFermer.setActionCommand("fermer");
 		
-		menuBar.add(interfaceTimeline);
-		menuBar.add(interfaceCreation);
-		menuBar.add(itemFermer);
+		menuBar.add(interfaceTimeline,BorderLayout.WEST);
+		menuBar.add(interfaceCreation,BorderLayout.CENTER);
+		menuBar.add(itemFermer,BorderLayout.EAST);
 				
 		setContentPane(contentPane);
 		setBackground(Color.LIGHT_GRAY);

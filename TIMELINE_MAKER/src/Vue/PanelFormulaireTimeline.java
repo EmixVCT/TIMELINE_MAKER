@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 
 import Controleur.Controleur;
 import Modele.Date;
+import Modele.ExceptionCreationTimeline;
 import Modele.ExceptionDate;
 import Modele.Timeline;
 
@@ -199,8 +200,16 @@ public class PanelFormulaireTimeline extends JPanel{
 		}
     }
 
-	public void setTimeline(Timeline parTimeline) {
-		parTimeline.setTimeline(textTitre.getText(),getDateDebut(),getDateFin(),getPeriode(),textLienDossier.getText());
+	public void setTimeline(Timeline parTimeline) throws ExceptionCreationTimeline{
+		Date debut = getDateDebut();
+		Date fin = getDateFin();
+		if (debut.compareTo(fin) > 0){
+			throw new ExceptionCreationTimeline("La date de debut doit etre inferieur a la date de fin");
+		}
+		String titre = textTitre.getText();
+		int periode = getPeriode();
+		String lien = textLienDossier.getText();
+		parTimeline.setTimeline(titre,debut,fin,periode,lien);
 		
 	}
     

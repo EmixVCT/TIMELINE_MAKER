@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Modele.Evenement;
+import Modele.ExceptionAjoutEvenement;
+import Modele.ExceptionCreationTimeline;
 import Modele.Timeline;
 import Vue.PanelCreation;
 import Vue.PanelFormulaireEvenement;
@@ -34,18 +36,26 @@ public class Controleur implements ActionListener {
 
 	public void actionPerformed(ActionEvent parEvt) {
 		if(parEvt.getActionCommand().equals("cree")){
-			panelFormulaireTimeline.setTimeline(timeline);
-			panelCreation.changerFormulaire();
-			panelTimeline.setTitre();
-			panelTimeline.setTable(timeline);
-			
+			try {
+				panelFormulaireTimeline.setTimeline(timeline);
+				panelCreation.changerFormulaire();
+				panelTimeline.setTitre();
+				panelTimeline.setTable(timeline);
+			} catch (ExceptionCreationTimeline e) {
+				e.printStackTrace();
+			}	
 		}
 		else if(parEvt.getActionCommand().equals("ajout")){
-			Evenement evt1 = panelFormulaireEvenement.getEvenement();
-			timeline.ajout(evt1);
-			panelTimeline.addEvenement(evt1);
-			panelFormulaireEvenement.reset();	
-			panelTimeline.setTable(timeline);
+			try {
+				Evenement evt1 = panelFormulaireEvenement.getEvenement();
+				timeline.ajout(evt1);
+				panelTimeline.addEvenement(evt1);
+				panelFormulaireEvenement.reset();	
+				panelTimeline.setTable(timeline);
+			} catch (ExceptionAjoutEvenement e) {
+				e.printStackTrace();
+			}
+
 		}
 		else if(parEvt.getActionCommand().equals("droite")){
 			panelTimeline.apres();

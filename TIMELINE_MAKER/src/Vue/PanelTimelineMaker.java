@@ -26,8 +26,8 @@ public class PanelTimelineMaker extends JPanel implements ActionListener{
 	private PanelCreation panelCreation = new PanelCreation(panelFormulaireTimeline,panelFormulaireEvenement);
 	
 	public PanelTimelineMaker() {
-		setBackground(new Color(230,67,98));
-		gestionnaireDeCartes = new CardLayout(5,5);
+		setBackground(Color.white);
+		gestionnaireDeCartes = new CardLayout(25,25);
 		
 		setLayout(gestionnaireDeCartes);
 

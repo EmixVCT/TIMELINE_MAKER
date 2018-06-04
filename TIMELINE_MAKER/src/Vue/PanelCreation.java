@@ -14,7 +14,7 @@ public class PanelCreation extends JPanel {
 		gestionnaireFormulaire = new CardLayout(1,1);
 		setLayout(gestionnaireFormulaire);
 		
-		setBackground(Color.YELLOW);
+		setBackground(Color.white);
 		
 		PanelFormulaireTimeline panelFormulaireTimeline = parPFT;
 		PanelFormulaireEvenement panelFormulaireEvenement = parPFE;

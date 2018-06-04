@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 import Modele.Evenement;
 
@@ -25,7 +27,9 @@ public class PanelEvenement extends JPanel{
 		this.add(image,BorderLayout.WEST); 
 		
 		text = new JLabel(textEvt());
-		this.add(text,BorderLayout.CENTER);
+		JScrollPane scroll = new JScrollPane(text,ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED , ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED );
+		this.add(scroll,BorderLayout.CENTER);
+
 		
 	}
 

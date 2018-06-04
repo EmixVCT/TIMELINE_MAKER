@@ -48,7 +48,7 @@ public class PanelFormulaireEvenement extends JPanel{
 		contraintes.fill = GridBagConstraints.HORIZONTAL;
 		contraintes.anchor = GridBagConstraints.WEST;
 		
-		contraintes.gridx=0;contraintes.gridx=0;
+		contraintes.gridx=0;contraintes.gridy=0;
 		contraintes.gridwidth = 4;
 		this.add(titreFenetre, contraintes) ;
 

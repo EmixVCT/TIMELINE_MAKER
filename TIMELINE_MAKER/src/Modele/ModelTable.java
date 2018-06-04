@@ -22,22 +22,24 @@ public class ModelTable extends DefaultTableModel{
 		chAnneeDebut = timeline.getDateDebut().getAnnee();
 		chAnneeFin = timeline.getDateFin().getAnnee();
 		
-		chNombreCol = chAnneeFin - chAnneeDebut;
+		chNombreCol = chAnneeFin - chAnneeDebut +1;
 		chNombreLig = 4;
+		
 		this.setColumnCount(chNombreCol);
 		this.setRowCount(chNombreLig);
 		
-		String [] Entete = new String[chNombreCol+1];
+		ArrayList<String> Entete = new ArrayList<String>();
 		int j = 0;
 		for(int i = chAnneeDebut ; i <= chAnneeFin;i++) {
-			Entete[j] = "";
+
 			if (j%timeline.getchPeriode()==0) {
-				Entete[j] =  Integer.toString(i);
+				Entete.add(Integer.toString(i)) ;
 			}
+			else
+				Entete.add("");
 			j++;
 		}
-		
-		this.setColumnIdentifiers(Entete); 
+		this.setColumnIdentifiers(Entete.toArray()); 
 		
 		//Les evenements 
 		HashMap<Date,Evenement> hashevts = timeline.getHash_Evenements();
