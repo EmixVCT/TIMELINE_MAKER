@@ -18,10 +18,10 @@ import Modele.Timeline;
 public class PanelTimelineMaker extends JPanel implements ActionListener{
 	private CardLayout gestionnaireDeCartes;
 	private Timeline timeline;
+	private boolean timelineOpen = false;
 
 	public PanelTimelineMaker() {
 		
-		boolean timelineOpen = false;
 		String intitulesBoutons[] = {"Oui", "Non"};	
 		int resultat = JOptionPane.showOptionDialog(this, "Voulez vous ouvrir une frise existante ?", "Timeline Maker", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, intitulesBoutons, intitulesBoutons[0]);
 		
@@ -85,6 +85,10 @@ public class PanelTimelineMaker extends JPanel implements ActionListener{
 				break;
 			}
 		}				
+	}
+	
+	public boolean getTimelineOpen() {
+		return timelineOpen;
 	}
 
 }

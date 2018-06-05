@@ -64,7 +64,6 @@ public class PanelTimeline extends JPanel{
 				addEvenement(evt);
 			}
 			setTitre();
-			FenetreTimeline.enableJMenuItemTimeline();
 		}
 	}
 	
