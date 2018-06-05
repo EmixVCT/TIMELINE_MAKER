@@ -25,6 +25,7 @@ public class PanelFormulaireEvenement extends JPanel{
 	
 	private JLabel	titreFenetre;
 	private JButton ajoutEvt = new JButton("Ajouter");
+	private JButton parcourir = new JButton("Parcourir");
 	private JTextField textTitre = new JTextField(15);
 	
 	private JComboBox boxJour;
@@ -125,17 +126,25 @@ public class PanelFormulaireEvenement extends JPanel{
         boxpoids.setSelectedItem(0) ;
 		this.add(boxpoids, contraintes);// ajout des heures
 		
+		
+		
 		// �tiquette "ien de la photo"
         contraintes.gridy=4;contraintes.gridx=0;
 		JLabel labelPhoto = new JLabel("Photo (lien)");
 		labelPhoto.setDisplayedMnemonic('P');
 		this.add(labelPhoto, contraintes);
-
+		
+		//Boutton parcourir photo
+		contraintes.gridx = 2 ;
+		contraintes.gridwidth = 3;
+		this.add(parcourir,contraintes);
+		parcourir.setActionCommand("parcourir");
+/*
         // saisie du lien de la photo
 		contraintes.gridx = 2 ;
 		contraintes.gridwidth = 3;
 		this.add(textLienPhoto, contraintes) ;
-		
+*/
 		
         // étiquette "Description"
 		contraintes.insets = new Insets(10,10,10,10);
@@ -155,6 +164,7 @@ public class PanelFormulaireEvenement extends JPanel{
 
 	public void enregistreEcouteur(Controleur parC){
 		ajoutEvt.addActionListener(parC);
+		parcourir.addActionListener(parC);
 	}
 	
 	public Evenement getEvenement() throws ExceptionAjoutEvenement{
@@ -193,12 +203,16 @@ public class PanelFormulaireEvenement extends JPanel{
 		return listJour;
 	}
 	
-	private ArrayList<String> getArrayListAnnee() {
+	public ArrayList<String> getArrayListAnnee() {
 		ArrayList<String> listAnnee = new ArrayList<String>();
 		for(int i = 0; i<=new Date().getAnnee();i++) {
 			listAnnee.add(Integer.toString(i));
 		}
 		return listAnnee;
+	}
+	
+	public void setTextLienPhoto(String lien) {
+		textLienPhoto.setText(lien);
 	}
 	
 }

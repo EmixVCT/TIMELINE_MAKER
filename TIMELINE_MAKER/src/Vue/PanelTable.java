@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -42,8 +43,8 @@ public class PanelTable extends JPanel {
 		tableTimeline.getTableHeader().setReorderingAllowed(false);
 		tableTimeline.getTableHeader().setResizingAllowed(false);
 		tableTimeline.setPreferredScrollableViewportSize(new Dimension(800,50*4));
-		tableTimeline.setRowHeight(50);		
-		
+		tableTimeline.setRowHeight(50);
+
 		tableTimeline.addMouseListener(new MouseAdapter(){
 		
 			public void mouseClicked(MouseEvent evt){

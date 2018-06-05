@@ -7,6 +7,7 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import javax.swing.Icon;
 import javax.swing.JPanel;
 
 import Modele.Date;

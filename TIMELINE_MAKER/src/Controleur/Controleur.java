@@ -2,6 +2,10 @@ package Controleur;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+
+import javax.swing.JFileChooser;
 
 import Modele.Evenement;
 import Modele.ExceptionAjoutEvenement;
@@ -57,7 +61,16 @@ public class Controleur implements ActionListener {
 			} catch (ExceptionAjoutEvenement e) {
 				e.printStackTrace();
 			}
-
+		}
+		else if (parEvt.getActionCommand().equals("parcourir")) {
+			File repertoireCourant = null;
+	        try {
+	            repertoireCourant = new File(".").getCanonicalFile();
+	        } catch(IOException e) {}
+	        JFileChooser dialogue = new JFileChooser(repertoireCourant);
+	        dialogue.showOpenDialog(null);
+	        panelFormulaireEvenement.setTextLienPhoto(dialogue.getSelectedFile().toString());
+	        
 		}
 		else if(parEvt.getActionCommand().equals("droite")){
 			panelTimeline.apres();
