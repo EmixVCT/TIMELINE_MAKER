@@ -139,12 +139,6 @@ public class PanelFormulaireEvenement extends JPanel{
 		contraintes.gridwidth = 3;
 		this.add(parcourir,contraintes);
 		parcourir.setActionCommand("parcourir");
-/*
-        // saisie du lien de la photo
-		contraintes.gridx = 2 ;
-		contraintes.gridwidth = 3;
-		this.add(textLienPhoto, contraintes) ;
-*/
 		
         // étiquette "Description"
 		contraintes.insets = new Insets(10,10,10,10);

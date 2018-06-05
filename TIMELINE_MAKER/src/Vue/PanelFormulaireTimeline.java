@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -150,6 +152,8 @@ public class PanelFormulaireTimeline extends JPanel{
 		contraintes.gridy = 6;
 		contraintes.gridx = 1 ;
 		contraintes.gridwidth = 4;
+		textLienDossier.setEditable(false);
+		textLienDossier.setText("/Timeline/");
 		this.add(textLienDossier, contraintes) ;
 		
 		
@@ -164,7 +168,6 @@ public class PanelFormulaireTimeline extends JPanel{
     
     public void reset(){
     	this.textTitre.setText("") ;
-    	this.textLienDossier.setText("");
         this.textTitre.requestFocus() ;
     }
     

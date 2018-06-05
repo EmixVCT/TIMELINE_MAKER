@@ -1,5 +1,7 @@
 package Modele;
 
+import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
@@ -13,7 +15,7 @@ import javax.swing.JPanel;
 import Modele.Date;
 import Modele.Evenement;
 
-public class Timeline {
+public class Timeline implements Serializable{
 	private String chTitre;
 	private Date chDateDebut;
 	private Date chDateFin;
@@ -46,6 +48,7 @@ public class Timeline {
 		if (dateEvt.compareTo(chDateDebut) >= 0 && dateEvt.compareTo(chDateFin) <= 0) {
 			Date date = parEvt.getChDate();
 			Hash_Evenements.put(date, parEvt);
+			saveTimeline();
 		}
 		else
 			throw new ExceptionAjoutEvenement("La date de l'evenement doit etre comprise entre la date de debut et la date de fin");
@@ -101,5 +104,9 @@ public class Timeline {
 		}
 		evt = Hash_Evenements.get(tamp);
 		return evt;
+	}
+	
+	private void saveTimeline() {
+		LectureEcriture.ecriture(new File(chAdresseFichier), this);
 	}
 }
