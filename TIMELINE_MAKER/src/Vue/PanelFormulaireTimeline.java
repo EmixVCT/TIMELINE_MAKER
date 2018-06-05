@@ -108,7 +108,7 @@ public class PanelFormulaireTimeline extends JPanel{
 		contraintes.gridx = 0 ;
 		contraintes.gridy = 3 ;
 		JLabel labelDateFin = new JLabel("Date debut");
-		labelDateFin.setDisplayedMnemonic('D');
+		labelDateFin.setDisplayedMnemonic('A');
 		this.add(labelDateFin, contraintes);
 
         //JComboBox Jours FIN
@@ -145,7 +145,7 @@ public class PanelFormulaireTimeline extends JPanel{
         contraintes.gridy=5;
         contraintes.gridx=0;
 		JLabel labelDossier = new JLabel("Dossier de sauvgarde (lien)");
-		labelDossier.setDisplayedMnemonic('D');
+		labelDossier.setDisplayedMnemonic('O');
 		this.add(labelDossier, contraintes);
 
         // saisie du lien de la photo
