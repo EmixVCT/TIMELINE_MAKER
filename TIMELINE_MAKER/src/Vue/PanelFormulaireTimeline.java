@@ -205,8 +205,8 @@ public class PanelFormulaireTimeline extends JPanel{
 	public void setTimeline(Timeline parTimeline) throws ExceptionCreationTimeline{
 		Date debut = getDateDebut();
 		Date fin = getDateFin();
-		if (debut.compareTo(fin) > 0){
-			throw new ExceptionCreationTimeline("La date de debut doit etre inferieur a la date de fin");
+		if (debut.compareTo(fin) >= 0 ){
+			throw new ExceptionCreationTimeline("La date de debut doit etre strictement inferieur\na la date de fin");
 		}
 		String titre = textTitre.getText();
 		int periode = getPeriode();

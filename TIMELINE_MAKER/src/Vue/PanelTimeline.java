@@ -42,7 +42,10 @@ public class PanelTimeline extends JPanel{
 		panelTable = new PanelTable(timeline, gestionnaireEvts,panelEvts,this);
 		
 		boutonDroite.setActionCommand("droite");
+		boutonDroite.setBackground(new Color(128, 208, 208));
 		boutonGauche.setActionCommand("gauche");
+		boutonGauche.setBackground(new Color(128, 208, 208));
+
 		
 		this.add(panelTable,BorderLayout.SOUTH);
 		this.add(boutonDroite,BorderLayout.EAST);
