@@ -28,7 +28,7 @@ public class FenetreTimeline extends JFrame {
 		//ajout d'un item � la barre des menus
 		interfaceTimeline.addActionListener(contentPane);
 		interfaceTimeline.setActionCommand("timeline");
-		interfaceTimeline.setEnabled(false);
+		//interfaceTimeline.setEnabled(false);
 		interfaceTimeline.setBackground(new Color(255, 255, 255));
 
 		

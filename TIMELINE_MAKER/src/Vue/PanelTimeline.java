@@ -52,7 +52,21 @@ public class PanelTimeline extends JPanel{
 		this.add(boutonGauche,BorderLayout.WEST);
 		
 		panelEvts.add(new JLabel("<html><h1>Entrez des Evenements</h1></html>",JLabel.CENTER));
+		
+		if (timeline.getNbEvenements() !=0) {
+			HashMap<Date,Evenement> hash_evt = timeline.getHash_Evenements();
+			Iterator<Date> dates = hash_evt.keySet().iterator();
+			Evenement evt;
+			Date date;
+			while(dates.hasNext()) {
+				date = (Date) dates.next();
+				evt = hash_evt.get(date);
+				addEvenement(evt);
+			}
+			setTitre();
+			FenetreTimeline.enableJMenuItemTimeline();
 		}
+	}
 	
 	public void enregistreEcouteur(Controleur parC) {
 		boutonDroite.addActionListener(parC);

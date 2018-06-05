@@ -17,16 +17,11 @@ import Modele.Timeline;
 
 public class PanelTimelineMaker extends JPanel implements ActionListener{
 	private CardLayout gestionnaireDeCartes;
-	
-	private Timeline timeline = new Timeline();
-	private PanelFormulaireTimeline panelFormulaireTimeline = new PanelFormulaireTimeline();
-	private PanelFormulaireEvenement panelFormulaireEvenement = new PanelFormulaireEvenement();
-	private PanelCreation panelCreation = new PanelCreation(panelFormulaireTimeline,panelFormulaireEvenement);
-	private PanelTimeline panelTimeline = new PanelTimeline(timeline);
-	
+	private Timeline timeline;
+
 	public PanelTimelineMaker() {
-		/*
-		int n = 0;
+		
+		boolean timelineOpen = false;
 		String intitulesBoutons[] = {"Oui", "Non"};	
 		int resultat = JOptionPane.showOptionDialog(this, "Voulez vous ouvrir une frise existante ?", "Timeline Maker", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, intitulesBoutons, intitulesBoutons[0]);
 		
@@ -41,7 +36,7 @@ public class PanelTimelineMaker extends JPanel implements ActionListener{
 			File fichierTimeline = dialogue.getSelectedFile();
 			try {
 				timeline = (Timeline) LectureEcriture.lecture(fichierTimeline);
-				n = 1;
+				timelineOpen = true;
 			} catch (IOException e) {
 				JOptionPane.showMessageDialog(this,"Erreur lors de l'ouverture de la Timeline");
 				timeline = new Timeline();
@@ -53,9 +48,9 @@ public class PanelTimelineMaker extends JPanel implements ActionListener{
 		
 		PanelFormulaireTimeline panelFormulaireTimeline = new PanelFormulaireTimeline();
 		PanelFormulaireEvenement panelFormulaireEvenement = new PanelFormulaireEvenement();
-		PanelCreation panelCreation = new PanelCreation(panelFormulaireTimeline,panelFormulaireEvenement,n);
+		PanelCreation panelCreation = new PanelCreation(panelFormulaireTimeline,panelFormulaireEvenement,timelineOpen);
 		PanelTimeline panelTimeline = new PanelTimeline(timeline);
-		*/
+		
 		
 		setBackground(new Color(128, 208, 208));
 		gestionnaireDeCartes = new CardLayout(25,25);
@@ -66,8 +61,8 @@ public class PanelTimelineMaker extends JPanel implements ActionListener{
 		add(panelTimeline,"timeline");
 		
 		gestionnaireDeCartes.show(this,"creation");
-		
 		Controleur controleur = new Controleur(timeline,panelCreation,panelTimeline,panelFormulaireEvenement ,panelFormulaireTimeline);
+
 	}
 
 	public void actionPerformed(ActionEvent parEvt) {

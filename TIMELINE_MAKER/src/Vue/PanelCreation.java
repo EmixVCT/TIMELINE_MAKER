@@ -9,22 +9,28 @@ import javax.swing.JPanel;
 public class PanelCreation extends JPanel {
 	
 	private CardLayout gestionnaireFormulaire;
+	private boolean timelineOpen;
 	
-	public PanelCreation(PanelFormulaireTimeline parPFT,PanelFormulaireEvenement parPFE) {
+	public PanelCreation(PanelFormulaireTimeline parPFT,PanelFormulaireEvenement parPFE,boolean n) {
 		gestionnaireFormulaire = new CardLayout(1,1);
 		setLayout(gestionnaireFormulaire);
-		
+
 		setBackground(new Color(128, 208, 208));
 		
 		PanelFormulaireTimeline panelFormulaireTimeline = parPFT;
 		PanelFormulaireEvenement panelFormulaireEvenement = parPFE;
-		add(panelFormulaireTimeline,"formTimeline");
-		add(panelFormulaireEvenement,"formEvenement");
+		timelineOpen = n;
 		
-		gestionnaireFormulaire.show(this,"formTimeline");
+		add(panelFormulaireEvenement,"formEvenement");
+		if (!timelineOpen) {
+			add(panelFormulaireTimeline,"formTimeline");
+			gestionnaireFormulaire.show(this,"formTimeline");
+		}
+		
 	}
 	
 	public void changerFormulaire() {
 		gestionnaireFormulaire.next(this);
 	}
+	
 }

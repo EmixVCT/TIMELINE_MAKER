@@ -37,6 +37,7 @@ public class Controleur implements ActionListener {
 		panelFormulaireEvenement.enregistreEcouteur(this);
 		panelFormulaireTimeline.enregistreEcouteur(this);
 		panelTimeline.enregistreEcouteur(this);
+		
 	}
 
 	public void actionPerformed(ActionEvent parEvt) {
@@ -51,6 +52,7 @@ public class Controleur implements ActionListener {
 				e.printStackTrace();
 			}	
 		}
+		
 		else if(parEvt.getActionCommand().equals("ajout")){
 			try {
 				Evenement evt1 = panelFormulaireEvenement.getEvenement();
@@ -58,6 +60,7 @@ public class Controleur implements ActionListener {
 				panelTimeline.addEvenement(evt1);
 				panelFormulaireEvenement.reset();	
 				panelTimeline.setTable(timeline);
+				
 			} catch (ExceptionAjoutEvenement e) {
 				e.printStackTrace();
 			}

@@ -22,6 +22,7 @@ public class Timeline implements Serializable{
 	private int chPeriode;
 	private String chAdresseFichier;
 	private HashMap<Date,Evenement> Hash_Evenements;
+	private int nbEvenement = 0;
 	
 	public Timeline() {
 		chTitre = "";
@@ -48,7 +49,8 @@ public class Timeline implements Serializable{
 		if (dateEvt.compareTo(chDateDebut) >= 0 && dateEvt.compareTo(chDateFin) <= 0) {
 			Date date = parEvt.getChDate();
 			Hash_Evenements.put(date, parEvt);
-			//saveTimeline();
+			nbEvenement++;
+			saveTimeline();
 		}
 		else
 			throw new ExceptionAjoutEvenement("La date de l'evenement doit etre comprise entre la date de debut et la date de fin");
@@ -105,8 +107,12 @@ public class Timeline implements Serializable{
 		evt = Hash_Evenements.get(tamp);
 		return evt;
 	}
-	/*
-	private void saveTimeline() {
+	
+	public void saveTimeline() {
 		LectureEcriture.ecriture(new File(chAdresseFichier), this);
-	}*/
+	}
+	
+	public int getNbEvenements() {
+		return nbEvenement;
+	}
 }
