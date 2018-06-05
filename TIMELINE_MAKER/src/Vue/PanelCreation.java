@@ -18,7 +18,6 @@ public class PanelCreation extends JPanel {
 		
 		PanelFormulaireTimeline panelFormulaireTimeline = parPFT;
 		PanelFormulaireEvenement panelFormulaireEvenement = parPFE;
-		
 		add(panelFormulaireTimeline,"formTimeline");
 		add(panelFormulaireEvenement,"formEvenement");
 		
