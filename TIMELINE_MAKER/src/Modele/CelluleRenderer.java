@@ -42,7 +42,7 @@ public class CelluleRenderer extends JLabel implements TableCellRenderer{
 				setText(evt.toString());
 			}
 			else {
-				setIcon(new ImageIcon(new ImageIcon(evt.getChPhoto()).getImage().getScaledInstance(70,50, Image.SCALE_DEFAULT)));
+				setIcon(new ImageIcon(new ImageIcon(evt.getChPhoto()).getImage().getScaledInstance(70,50,  Image.SCALE_SMOOTH)));
 			}
 
 		}

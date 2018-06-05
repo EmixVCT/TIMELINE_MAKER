@@ -26,7 +26,7 @@ public class PanelEvenement extends JPanel{
 		setBackground(new Color(128, 208, 208));
 		setLayout(new BorderLayout());
 				
-		image = new JLabel(new ImageIcon(new ImageIcon(parEvt.getChPhoto()).getImage().getScaledInstance(380,250, Image.SCALE_DEFAULT)));
+		image = new JLabel(new ImageIcon(new ImageIcon(parEvt.getChPhoto()).getImage().getScaledInstance(350,210, Image.SCALE_SMOOTH)));
 		this.add(image,BorderLayout.WEST); 
 		
 		text = new JLabel(textEvt());
