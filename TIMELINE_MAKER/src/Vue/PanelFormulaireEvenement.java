@@ -131,7 +131,7 @@ public class PanelFormulaireEvenement extends JPanel{
 		// �tiquette "ien de la photo"
         contraintes.gridy=4;contraintes.gridx=0;
 		JLabel labelPhoto = new JLabel("Photo (lien)");
-		labelPhoto.setDisplayedMnemonic('P');
+		labelPhoto.setDisplayedMnemonic('h');
 		this.add(labelPhoto, contraintes);
 		
 		//Boutton parcourir photo
