@@ -2,6 +2,7 @@ package Modele;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Image;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -13,7 +14,7 @@ import Modele.Evenement;
 
 public class CelluleRenderer extends JLabel implements TableCellRenderer{
 	private Timeline timeline;
-	private Icon icon;
+
 	
 	public CelluleRenderer(Timeline parTimeline) {
 		super();
@@ -41,7 +42,7 @@ public class CelluleRenderer extends JLabel implements TableCellRenderer{
 				setText(evt.toString());
 			}
 			else {
-				setIcon(new ImageIcon(evt.getChPhoto()));
+				setIcon(new ImageIcon(new ImageIcon(evt.getChPhoto()).getImage().getScaledInstance(70,50, Image.SCALE_DEFAULT)));
 			}
 
 		}
