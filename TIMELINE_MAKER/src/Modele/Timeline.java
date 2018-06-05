@@ -109,7 +109,9 @@ public class Timeline implements Serializable{
 	}
 	
 	public void saveTimeline() {
-		LectureEcriture.ecriture(new File(chAdresseFichier), this);
+		File file = new File(chAdresseFichier);
+		file.mkdirs();
+		LectureEcriture.ecriture(new File(chAdresseFichier + File.separator + chTitre + ".ser"), this);
 	}
 	
 	public int getNbEvenements() {

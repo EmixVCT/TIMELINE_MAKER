@@ -153,7 +153,7 @@ public class PanelFormulaireTimeline extends JPanel{
 		contraintes.gridx = 1 ;
 		contraintes.gridwidth = 4;
 		textLienDossier.setEditable(false);
-		textLienDossier.setText("Timeline" + File.separator );
+		textLienDossier.setText("Timeline" );
 		this.add(textLienDossier, contraintes) ;
 		
 	}
@@ -212,7 +212,6 @@ public class PanelFormulaireTimeline extends JPanel{
 		String titre = textTitre.getText();
 		int periode = getPeriode();
 		String lien = textLienDossier.getText();
-		lien += titre + ".ser";
 		parTimeline.setTimeline(titre,debut,fin,periode,lien);
 		
 	}
