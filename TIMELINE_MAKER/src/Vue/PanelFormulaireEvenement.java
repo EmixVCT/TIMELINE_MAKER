@@ -15,7 +15,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import Controleur.Controleur;
-import Modele.Timeline;
 import Modele.Date;
 import Modele.Evenement;
 import Modele.ExceptionAjoutEvenement;
@@ -23,16 +22,17 @@ import Modele.ExceptionDate;
 
 public class PanelFormulaireEvenement extends JPanel{
 	
+	private static final long serialVersionUID = 1L;
 	private JLabel	titreFenetre;
 	private JButton ajoutEvt = new JButton("Ajouter");
 	private JButton parcourir = new JButton("Parcourir");
 	private JTextField textTitre = new JTextField(15);
 	
-	private JComboBox boxJour;
-	private JComboBox boxMois;
-	private JComboBox boxAnnee;
+	private JComboBox<?> boxJour;
+	private JComboBox<?> boxMois;
+	private JComboBox<?> boxAnnee;
 
-	private JComboBox boxpoids;
+	private JComboBox<?> boxpoids;
 	
 	private JTextField textLienPhoto = new JTextField(15);
 
@@ -84,14 +84,14 @@ public class PanelFormulaireEvenement extends JPanel{
         //JComboBox Jours
 		contraintes.gridx =1 ;
 		String jours[] = getListJour();
-        boxJour = new JComboBox(jours) ;
+        boxJour = new JComboBox<Object>(jours) ;
         boxJour.setSelectedItem(Integer.toString(new Date().getJour()));
 		this.add(boxJour, contraintes);
 		
         //JComboBox Mois
 		contraintes.gridx =2 ;
 		String mois[] = {"1","2","3","4","5","6","7","8","9","10","11","12"};
-        boxMois = new JComboBox(mois) ;
+        boxMois = new JComboBox<Object>(mois) ;
         boxMois.setSelectedItem(Integer.toString(new Date().getMois()));
 		this.add(boxMois, contraintes);
 		
@@ -99,7 +99,7 @@ public class PanelFormulaireEvenement extends JPanel{
 		contraintes.gridx =3 ;
 		contraintes.gridwidth = 2;
 		ArrayList<String> annee = getArrayListAnnee();
-        boxAnnee = new JComboBox(annee.toArray()) ;
+        boxAnnee = new JComboBox<Object>(annee.toArray()) ;
         boxAnnee.setSelectedItem(Integer.toString(new Date().getAnnee()));
 		this.add(boxAnnee, contraintes);
 		
@@ -122,7 +122,7 @@ public class PanelFormulaireEvenement extends JPanel{
 		for(int i = 0 ; i <= 3 ; i++) {
 				poids[i] = ""+(i+1) ;
 		}
-        boxpoids = new JComboBox(poids) ;
+        boxpoids = new JComboBox<Object>(poids) ;
         boxpoids.setSelectedItem(0) ;
 		this.add(boxpoids, contraintes);// ajout des heures
 		

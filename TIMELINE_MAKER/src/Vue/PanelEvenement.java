@@ -3,9 +3,6 @@ package Vue;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
-import java.awt.Insets;
-import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,6 +13,8 @@ import javax.swing.border.EmptyBorder;
 import Modele.Evenement;
 
 public class PanelEvenement extends JPanel{
+
+	private static final long serialVersionUID = 1L;
 	private Evenement chEvenement;
 	private JLabel image;
 	private JLabel text;
@@ -26,7 +25,7 @@ public class PanelEvenement extends JPanel{
 		setBackground(new Color(128, 208, 208));
 		setLayout(new BorderLayout());
 				
-		image = new JLabel(new ImageIcon(new ImageIcon(parEvt.getChPhoto()).getImage().getScaledInstance(350,210, Image.SCALE_SMOOTH)));
+		image = new JLabel(new ImageIcon(new ImageIcon(parEvt.getChPhoto()).getImage().getScaledInstance(300,210, Image.SCALE_SMOOTH)));
 		this.add(image,BorderLayout.WEST); 
 		
 		text = new JLabel(textEvt());

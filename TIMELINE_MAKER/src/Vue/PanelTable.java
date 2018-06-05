@@ -7,9 +7,6 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
-
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -22,6 +19,7 @@ import Modele.Timeline;
 
 public class PanelTable extends JPanel {
 
+	private static final long serialVersionUID = 1L;
 	private ModelTable modele;
 	private JTable tableTimeline;
 	private Timeline timeline;
@@ -61,7 +59,7 @@ public class PanelTable extends JPanel {
 				}
 
 		});
-		tableTimeline.setDefaultRenderer(Evenement.class, new CelluleRenderer(timeline));
+		tableTimeline.setDefaultRenderer(Evenement.class, new CelluleRenderer());
 		JScrollPane scroll = new JScrollPane(tableTimeline,ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER , ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS );
 		scroll.setAutoscrolls(true);
 		this.add(scroll,BorderLayout.CENTER);

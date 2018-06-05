@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -21,17 +19,19 @@ import Modele.ExceptionDate;
 import Modele.Timeline;
 
 public class PanelFormulaireTimeline extends JPanel{
+
+	private static final long serialVersionUID = 1L;
 	private JLabel	titreFenetre;
 	private JButton creeTimeline = new JButton("Crée");
 	private JTextField textTitre = new JTextField(15);
 	
-	private JComboBox boxJourDebut;
-	private JComboBox boxMoisDebut;
-	private JComboBox boxAnneeDebut;
+	private JComboBox<?> boxJourDebut;
+	private JComboBox<?> boxMoisDebut;
+	private JComboBox<?> boxAnneeDebut;
 	
-	private JComboBox boxJourFin;
-	private JComboBox boxMoisFin;
-	private JComboBox boxAnneeFin;
+	private JComboBox<?> boxJourFin;
+	private JComboBox<?> boxMoisFin;
+	private JComboBox<?> boxAnneeFin;
 
 	private JTextField textPeriode = new JTextField(15);
 		
@@ -84,14 +84,14 @@ public class PanelFormulaireTimeline extends JPanel{
         //JComboBox Jours debut
 		contraintes.gridx =1 ;
 		String jours[] = getListJour();
-        boxJourDebut = new JComboBox(jours) ;
+        boxJourDebut = new JComboBox<Object>(jours) ;
         boxJourDebut.setSelectedItem(Integer.toString(new Date().getJour()));
 		this.add(boxJourDebut, contraintes);
 		
         //JComboBox Mois debut
 		contraintes.gridx =2 ;
 		String mois[] = {"1","2","3","4","5","6","7","8","9","10","11","12"};
-        boxMoisDebut = new JComboBox(mois) ;
+        boxMoisDebut = new JComboBox<Object>(mois) ;
         boxMoisDebut.setSelectedItem(Integer.toString(new Date().getMois()));
 		this.add(boxMoisDebut, contraintes);
 		
@@ -99,7 +99,7 @@ public class PanelFormulaireTimeline extends JPanel{
 		contraintes.gridx =3 ;
 		contraintes.gridwidth = 2;
 		ArrayList<String> annee = getArrayListAnnee();
-        boxAnneeDebut = new JComboBox(annee.toArray()) ;
+        boxAnneeDebut = new JComboBox<Object>(annee.toArray()) ;
         boxAnneeDebut.setSelectedItem(Integer.toString(new Date().getAnnee()));
 		this.add(boxAnneeDebut, contraintes);
 		
@@ -113,20 +113,20 @@ public class PanelFormulaireTimeline extends JPanel{
 
         //JComboBox Jours FIN
 		contraintes.gridx =1 ;
-        boxJourFin = new JComboBox(jours) ;
+        boxJourFin = new JComboBox<Object>(jours) ;
         boxJourFin.setSelectedItem(Integer.toString(new Date().getJour()));
 		this.add(boxJourFin, contraintes);
 		
         //JComboBox Mois FIN
 		contraintes.gridx =2 ;
-        boxMoisFin = new JComboBox(mois) ;
+        boxMoisFin = new JComboBox<Object>(mois) ;
         boxMoisFin.setSelectedItem(Integer.toString(new Date().getMois()));
 		this.add(boxMoisFin, contraintes);
 		
         //JComboBox Année FIN
 		contraintes.gridx =3 ;
 		contraintes.gridwidth = 2;
-		boxAnneeFin = new JComboBox(annee.toArray()) ;
+		boxAnneeFin = new JComboBox<Object>(annee.toArray()) ;
 		boxAnneeFin.setSelectedItem(Integer.toString(new Date().getAnnee()));
 		this.add(boxAnneeFin, contraintes);
 		

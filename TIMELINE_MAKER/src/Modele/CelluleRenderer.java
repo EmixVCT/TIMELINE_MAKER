@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -13,13 +12,12 @@ import javax.swing.table.TableCellRenderer;
 import Modele.Evenement;
 
 public class CelluleRenderer extends JLabel implements TableCellRenderer{
-	private Timeline timeline;
-
 	
-	public CelluleRenderer(Timeline parTimeline) {
+	private static final long serialVersionUID = 1L;
+
+	public CelluleRenderer() {
 		super();
 
-		timeline = parTimeline;
 		setOpaque(true);
 		setHorizontalAlignment(JLabel.CENTER);
 		setVerticalAlignment(JLabel.CENTER);

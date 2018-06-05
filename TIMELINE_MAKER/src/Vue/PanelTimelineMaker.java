@@ -16,6 +16,8 @@ import Modele.LectureEcriture;
 import Modele.Timeline;
 
 public class PanelTimelineMaker extends JPanel implements ActionListener{
+
+	private static final long serialVersionUID = 1L;
 	private CardLayout gestionnaireDeCartes;
 	private Timeline timeline;
 	private boolean timelineOpen = false;
@@ -61,6 +63,8 @@ public class PanelTimelineMaker extends JPanel implements ActionListener{
 		add(panelTimeline,"timeline");
 		
 		gestionnaireDeCartes.show(this,"creation");
+		
+		@SuppressWarnings("unused")
 		Controleur controleur = new Controleur(timeline,panelCreation,panelTimeline,panelFormulaireEvenement ,panelFormulaireTimeline);
 
 	}

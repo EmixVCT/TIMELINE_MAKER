@@ -2,11 +2,10 @@ package Modele;
 
 import java.io.Serializable;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 public class Evenement implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private String chTitre;
 	private Date chDate;
 	private String chDescription;

@@ -18,6 +18,8 @@ import java.util.GregorianCalendar;
  * @version 1.0
  */
 public class Date implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	/**
 	 * chJour est un entier 
 	 * corespond au jour du mois

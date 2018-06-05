@@ -1,16 +1,14 @@
 package Modele;
 
-import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
-
 import javax.swing.table.DefaultTableModel;
 import Modele.Timeline;
 
 public class ModelTable extends DefaultTableModel{
+
+	private static final long serialVersionUID = 1L;
 	private int chNombreCol;
 	private int chNombreLig;
 	private int chAnneeDebut;
@@ -45,7 +43,7 @@ public class ModelTable extends DefaultTableModel{
 		//Les evenements 
 		HashMap<Date,Evenement> hashevts = timeline.getHash_Evenements();
 				
-		Iterator dates = hashevts.keySet().iterator();
+		Iterator<Date> dates = hashevts.keySet().iterator();
 		Date date;
 		Evenement evt;
 		while(dates.hasNext()) {
@@ -67,7 +65,8 @@ public class ModelTable extends DefaultTableModel{
 		setValueAt(parEvt,indiceLigne, indiceColonne);
 	}//ajoutEvenement
 	
-	public Class getColumnClass(int indice){
+
+	public Class<Evenement> getColumnClass(int indice){
 		return Evenement.class;
 	}
 }//Classe

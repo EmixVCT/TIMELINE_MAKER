@@ -2,20 +2,15 @@ package Modele;
 
 import java.io.File;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
-
-import javax.swing.Icon;
-import javax.swing.JPanel;
 
 import Modele.Date;
 import Modele.Evenement;
 
 public class Timeline implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	private String chTitre;
 	private Date chDateDebut;
 	private Date chDateFin;

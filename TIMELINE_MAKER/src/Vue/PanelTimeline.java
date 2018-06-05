@@ -16,6 +16,8 @@ import Modele.Evenement;
 import Modele.Timeline;
 
 public class PanelTimeline extends JPanel{
+
+	private static final long serialVersionUID = 1L;
 	private Timeline timeline;
 	private PanelTable panelTable;
 	
