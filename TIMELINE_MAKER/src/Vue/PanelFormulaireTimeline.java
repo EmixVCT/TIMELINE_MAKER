@@ -107,7 +107,7 @@ public class PanelFormulaireTimeline extends JPanel{
 		contraintes.gridwidth = 1;
 		contraintes.gridx = 0 ;
 		contraintes.gridy = 3 ;
-		JLabel labelDateFin = new JLabel("Date debut");
+		JLabel labelDateFin = new JLabel("Date fin");
 		labelDateFin.setDisplayedMnemonic('a');
 		this.add(labelDateFin, contraintes);
 
