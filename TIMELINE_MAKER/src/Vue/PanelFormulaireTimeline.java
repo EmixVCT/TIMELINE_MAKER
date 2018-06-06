@@ -160,7 +160,7 @@ public class PanelFormulaireTimeline extends JPanel{
 		contraintes.gridx = 1 ;
 		contraintes.gridwidth = 4;
 		textLienDossier.setEditable(false);
-		textLienDossier.setText("Timeline" );
+		textLienDossier.setText("Save_Timelines" );
 		this.add(textLienDossier, contraintes) ;
 		
 	}
