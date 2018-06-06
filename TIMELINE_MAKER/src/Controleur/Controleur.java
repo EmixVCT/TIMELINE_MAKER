@@ -25,7 +25,6 @@ import Vue.PanelTimeline;
  * <li>un panelCreation</li>
  * <li>un panelFormulaireTimeline</li>
  * <li>un panelFormulaireEvenement</li>
- * <li>un panelCreation</li>
  * </ul>
  * @author Maxime VINCENT et Hugo HAMEL
  * @see Timeline
