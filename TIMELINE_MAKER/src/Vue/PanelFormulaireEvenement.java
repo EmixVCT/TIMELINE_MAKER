@@ -20,6 +20,11 @@ import Modele.Evenement;
 import Modele.ExceptionAjoutEvenement;
 import Modele.ExceptionDate;
 
+/**
+ * PanelFormulaireEvenement est la classe permet de crée un JPanel 
+ * gérer par un GridBagLayout
+ * @author Maxime VINCENT et Hugo HAMEL
+ */
 public class PanelFormulaireEvenement extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
@@ -38,6 +43,10 @@ public class PanelFormulaireEvenement extends JPanel{
 
 	private JTextArea textDescription = new JTextArea(10,20);
 	
+	/**
+	 * Contructeur de la classe PanelFormulaireEvenement 
+	 * ajoute des elements au panel pour crée un formulaire
+	 */
 	public PanelFormulaireEvenement(){
 		
 		setBackground(new Color(128, 208, 208));
@@ -136,7 +145,11 @@ public class PanelFormulaireEvenement extends JPanel{
 		
 		//Boutton parcourir photo
 		contraintes.gridx = 2 ;
-		contraintes.gridwidth = 3;
+		contraintes.gridwidth = 2;
+		this.add(textLienPhoto,contraintes);
+		textLienPhoto.setEditable(false);
+		contraintes.gridx = 4 ;
+		contraintes.gridwidth = 1;
 		this.add(parcourir,contraintes);
 		parcourir.setActionCommand("parcourir");
 		
@@ -155,12 +168,21 @@ public class PanelFormulaireEvenement extends JPanel{
 		contraintes.gridx = 2 ;
 		this.add(scroll, contraintes) ;
 	}// PanelFormuaire()
-
+	/**
+	 * Méthode permetant de mettre a l'écoute les boutons du Jpanel dans le controleur
+	 * @param parC controleur a mettre a l'écoute
+	 */
 	public void enregistreEcouteur(Controleur parC){
 		ajoutEvt.addActionListener(parC);
 		parcourir.addActionListener(parC);
 	}
 	
+	/**
+	 * récupère les donnée entrez dans les conteneur et créé
+	 * un nouvelle objet de la classe evenement avec.
+	 * @return l'evenement créé
+	 * @throws ExceptionAjoutEvenement
+	 */
 	public Evenement getEvenement() throws ExceptionAjoutEvenement{
 		if (textTitre.getText().compareTo("")==0) {
 			throw new ExceptionAjoutEvenement("Vous devez obligatoirement donnée un titre a l'evenement");
@@ -169,7 +191,9 @@ public class PanelFormulaireEvenement extends JPanel{
 			return new Evenement(textTitre.getText(),getDate(),textDescription.getText(),poids,textLienPhoto.getText());
 		}
 	}
-    
+    /**
+     * réinitialise les cellules du formulaire
+     */
     public void reset(){
     	this.textTitre.setText("") ;
         this.textDescription.setText("");
@@ -177,6 +201,11 @@ public class PanelFormulaireEvenement extends JPanel{
         this.textTitre.requestFocus() ;
     }
     
+    /**
+     * récupère la date entrez dans les JComboBox
+     * @return une date
+     * @see Date
+     */
     public Date getDate() {
     	String jour = boxJour.getSelectedItem().toString();
     	String mois = boxMois.getSelectedItem().toString();
@@ -189,6 +218,10 @@ public class PanelFormulaireEvenement extends JPanel{
 		}
 		return null;
     } 
+    /**
+     * renvoie dans une list de String les jours de 1 a 31
+     * @return liste de String
+     */
 	public String[] getListJour() {
 		String[] listJour = new String[31];
 		for(int i = 1;i<=31;i++) {
@@ -196,7 +229,10 @@ public class PanelFormulaireEvenement extends JPanel{
 		}
 		return listJour;
 	}
-	
+    /**
+     * renvoie dans une ArrayList de String les années de 0 a aujourd'hui
+     * @return ArrayListe de String
+     */
 	public ArrayList<String> getArrayListAnnee() {
 		ArrayList<String> listAnnee = new ArrayList<String>();
 		for(int i = 0; i<=new Date().getAnnee();i++) {
@@ -204,7 +240,10 @@ public class PanelFormulaireEvenement extends JPanel{
 		}
 		return listAnnee;
 	}
-	
+	/**
+	 * Defini le lien de la photo dans la zone de texte
+	 * @param lien le lien de la photo en String
+	 */
 	public void setTextLienPhoto(String lien) {
 		textLienPhoto.setText(lien);
 	}

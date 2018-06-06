@@ -15,6 +15,19 @@ import Controleur.Controleur;
 import Modele.LectureEcriture;
 import Modele.Timeline;
 
+
+/**
+ * PanelTimelineMaker est la classe permet de crée un JPanel contenant les deux panel
+ * principaux gérer par un cardLayout
+ * les 2 panels suivant :
+ * <ul>
+ * <li>Le panelTimeline</li>
+ * <li>Le panelCreation</li>
+ * </ul>
+ * 
+ * @author Maxime VINCENT et Hugo HAMEL
+ *
+ */
 public class PanelTimelineMaker extends JPanel implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
@@ -22,6 +35,10 @@ public class PanelTimelineMaker extends JPanel implements ActionListener{
 	private Timeline timeline;
 	private boolean timelineOpen = false;
 
+	/**
+	 * Constructeur de la classe PanelTimelineMaker
+	 * Affiche dans un premier temp une boite de dialogue puis ajoute les panels
+	 */
 	public PanelTimelineMaker() {
 		
 		String intitulesBoutons[] = {"Oui", "Non"};	
@@ -68,7 +85,14 @@ public class PanelTimelineMaker extends JPanel implements ActionListener{
 		Controleur controleur = new Controleur(timeline,panelCreation,panelTimeline,panelFormulaireEvenement ,panelFormulaireTimeline);
 
 	}
-
+	/** 
+    * <b>méthode actionPerfomed de la classe PanelTimelineMaker</b> 
+    * @param parEvt Objet de la classe ActionEvent
+    * 
+    * La methode ce déclanche lorsque qu'un evenement ce passe 
+    * dans les panel mis sur ecoute pas le controleur
+    * @see FenetreTimeline
+    */ 
 	public void actionPerformed(ActionEvent parEvt) {
 		String actionCommand = parEvt.getActionCommand();
 		
@@ -90,7 +114,10 @@ public class PanelTimelineMaker extends JPanel implements ActionListener{
 			}
 		}				
 	}
-	
+	/**
+	 * Méthode qui recupère si une timeline a été ouverte
+	 * @return renvoie vrai ou faux (boolean)
+	 */
 	public boolean getTimelineOpen() {
 		return timelineOpen;
 	}

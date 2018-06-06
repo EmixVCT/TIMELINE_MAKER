@@ -1,6 +1,7 @@
 package Vue;
 
 import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -12,6 +13,17 @@ import javax.swing.border.EmptyBorder;
 
 import Modele.Evenement;
 
+/**
+ * PanelEvenement est la classe permet de crée un JPanel 
+ * gérer par un BorderLayout
+ * Cette classe est caractérisée par les informations suivante :
+ * <ul>
+ * <li>Un evenement</li>
+ * <li>Une image</li>
+ * <li>Un texte</li>
+ * </ul>
+ * @author Maxime VINCENT et Hugo HAMEL
+ */
 public class PanelEvenement extends JPanel{
 
 	private static final long serialVersionUID = 1L;
@@ -19,6 +31,10 @@ public class PanelEvenement extends JPanel{
 	private JLabel image;
 	private JLabel text;
 	
+	/**
+	 * Constructeur de la classe {@link PanelEvenement}
+	 * @param parEvt Un evenement
+	 */
 	public PanelEvenement(Evenement parEvt) {
 		chEvenement = parEvt;
 
@@ -36,7 +52,10 @@ public class PanelEvenement extends JPanel{
 
 		
 	}
-
+	/**
+	 * Méthode qui renvoie les informations de l'evenement en html dans un String
+	 * @return le texte en html
+	 */
 	public String textEvt() {
 		String txt = "<html>\n";
 		txt += "<h4> <i> " + chEvenement.getChDate().toString() + "<i> </h4>\n";

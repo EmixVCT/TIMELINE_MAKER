@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -16,7 +18,18 @@ import Modele.CelluleRenderer;
 import Modele.Evenement;
 import Modele.ModelTable;
 import Modele.Timeline;
-
+/**
+ * PanelTable est un JPanel géré par un BorderLayout contenant une JTable
+ * Cette classe est caractérisée par les informations suivante :
+ * <ul>
+ * <li>une timeline</li>
+ * <li>une Jtable</li>
+ * <li>un modelTable</li>
+ * <li>un cardlayout</li>
+ * <li>un panelTimeline</li>
+ * </ul>
+ * @author Maxime VINCENT et Hugo HAMEL
+ */
 public class PanelTable extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -27,6 +40,14 @@ public class PanelTable extends JPanel {
 	private JPanel panelEvts;
 	private PanelTimeline panelTimeline;
 	
+	/**
+	 * Constructeur de la classe PanelTable
+	 * @param parTimeline une timeline
+	 * @param parGestionnaireEvts un gestionnaire d'evenement (cardLayout)
+	 * @param parPanelEvts un JPanel
+	 * @param parPanelTimeline un PanelTimeLine
+	 * Construit une Jtable en ajoutant un {@link MouseListener} permettant de syncroniser la JTable a PanelTimeline
+	 */
 	public PanelTable(Timeline parTimeline,CardLayout parGestionnaireEvts,JPanel parPanelEvts,PanelTimeline parPanelTimeline) {
 		setLayout(new BorderLayout());
 		setBackground(new Color(128, 208, 208));
@@ -64,6 +85,10 @@ public class PanelTable extends JPanel {
 		scroll.setAutoscrolls(true);
 		this.add(scroll,BorderLayout.CENTER);
 	}
+	/**
+	 * Méthode qui met a jour le model de la table
+	 * @param parTimeline un Objet de la classe {@link Timeline}
+	 */
 	public void updateTable(Timeline parTimeline) {
 		ModelTable parModele = new ModelTable(parTimeline);
 		tableTimeline.setModel(parModele);

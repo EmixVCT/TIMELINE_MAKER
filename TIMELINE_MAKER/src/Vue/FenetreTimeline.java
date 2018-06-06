@@ -8,6 +8,11 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+/**
+ * FenetreTimeline est la classe permet lancer toute les vue c'est la fenetre mere
+ * 
+ * @author Maxime VINCENT et Hugo HAMEL
+ */
 public class FenetreTimeline extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -15,6 +20,10 @@ public class FenetreTimeline extends JFrame {
 	private static JMenuItem interfaceCreation = new JMenuItem("Creation");
 	private static JMenuItem itemFermer = new JMenuItem("Fermer");
 
+	/**
+	 * Constructeur de la classe FenetreTimeLine
+	 * @param parTitre titre de la fenetre
+	 */
 	public FenetreTimeline(String parTitre) {
 		super(parTitre);
 		
@@ -56,17 +65,25 @@ public class FenetreTimeline extends JFrame {
 		setVisible(true);
 		setLocation(200,100);
 		}
-			
+	/**
+	 * fonction main du TimeLine Maker		
+	 * @param args
+	 */
 	public static void main(String [] args){ //main
 		
 		new FenetreTimeline("Timeline maker"); //cree la fenetre avec le titre en argument
 		}//ferme main
 	
-	
+	/**
+	 * méthode getInsets qui permet de definir un inset sur la fenetre mere
+	 * @return un objet de la classe inset
+	 */
 	public Insets getInsets (){
 		return new Insets (30,5,5,5) ; // HAUT,GAUCHE,BAS,DROITE
 		}
-
+	/**
+	 * Méthode static permettent d'activer le JMenuBouton "Timeline"
+	 */
 	public static void enableJMenuItemTimeline() {
 		interfaceTimeline.setEnabled(true);
 		

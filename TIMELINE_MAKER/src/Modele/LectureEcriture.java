@@ -7,7 +7,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
+/**
+ * LectureEcriture est la classe permet de lire et d'écrire dans des fichier des objet serializé
+ * 
+ * @author Maxime VINCENT et Hugo HAMEL
+ * @see File
+ */
 public class LectureEcriture {
 	public static Object lecture(File parFichier) throws FileNotFoundException, IOException{
 		ObjectInputStream flux;

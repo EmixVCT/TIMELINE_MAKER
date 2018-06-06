@@ -159,6 +159,12 @@ public class Date implements Serializable{
 	private static boolean estBissextile(int parAnnee) {
 		return parAnnee % 4 == 0 && (parAnnee % 100 != 0 || parAnnee % 400 == 0);
 	}
+	
+    /** 
+     * Méthode compareTo de la class Date 
+     * @param parDate Corespond a la date a comparer
+     * @return renvoi un un chiffre negatif ou positif ou egale a 0
+     */
 	public int compareTo (Date parDate) {
 		if (chAnnee < parDate.chAnnee)
 			return -1;

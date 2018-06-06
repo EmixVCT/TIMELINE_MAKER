@@ -17,6 +17,23 @@ import Vue.PanelFormulaireEvenement;
 import Vue.PanelFormulaireTimeline;
 import Vue.PanelTimeline;
 
+/**
+ * Controleur est la classe permet de faire le lien entre le modele et la vue
+ * Cette classe est caractérisée par les informations suivante :
+ * <ul>
+ * <li>une timeline</li>
+ * <li>un panelCreation</li>
+ * <li>un panelFormulaireTimeline</li>
+ * <li>un panelFormulaireEvenement</li>
+ * <li>un panelCreation</li>
+ * </ul>
+ * @author Maxime VINCENT et Hugo HAMEL
+ * @see Timeline
+ * @see PanelTimeline
+ * @see PanelFormulaireEvenement
+ * @see PanelFormulaireTimeline
+ * @see PanelCreation
+ */
 public class Controleur implements ActionListener {
 	private Timeline timeline;
 	
@@ -26,7 +43,15 @@ public class Controleur implements ActionListener {
 	
 	private PanelTimeline panelTimeline;
 	
-	
+	/** 
+    * <b>Constructeur de Controleur</b> 
+    * @param parTl correspond a l'objet timeline 
+    * @param parPC correspond a un panelcreation
+    * @param parPT correspond a un panelTimeline
+    * @param parPFE correspond a un panelFormulaireEvenement
+    * @param parPFT correspond a un panelFormulaireTimeline 
+    * Le controleur ce met a l'écoute des elements des panels
+    */ 
 	public Controleur(Timeline parTl,PanelCreation parPC,PanelTimeline parPT,PanelFormulaireEvenement parPFE ,PanelFormulaireTimeline parPFT) {
 		timeline = parTl;
 		panelCreation =parPC;
@@ -39,7 +64,14 @@ public class Controleur implements ActionListener {
 		panelTimeline.enregistreEcouteur(this);
 		
 	}
-
+	
+	/** 
+    * <b>méthode actionPerfomed de la classe Controleur</b> 
+    * @param parEvt Objet de la classe ActionEvent
+    * 
+    * La methode ce déclanche lorsque qu'un evenement ce passe 
+    * dans les panel mis sur ecoute pas le controleur
+    */ 
 	public void actionPerformed(ActionEvent parEvt) {
 		if(parEvt.getActionCommand().equals("cree")){
 			try {

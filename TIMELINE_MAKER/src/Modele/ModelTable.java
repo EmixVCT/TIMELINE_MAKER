@@ -5,7 +5,19 @@ import java.util.HashMap;
 import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
 import Modele.Timeline;
-
+/**
+ * ModelTable est la classe permet de definir un modele a une JTable
+ * Cette classe est caractérisée par les informations suivante :
+ * <ul>
+ * <li>une timeline</li>
+ * <li>un nombre de colonne</li>
+ * <li>un nombre de ligne</li>
+ * <li>une année de debut</li>
+ * <li>une année de fin</li>
+ * </ul>
+ * @author Maxime VINCENT et Hugo HAMEL
+ * @see DefaultTableModel
+ */
 public class ModelTable extends DefaultTableModel{
 
 	private static final long serialVersionUID = 1L;
@@ -14,7 +26,11 @@ public class ModelTable extends DefaultTableModel{
 	private int chAnneeDebut;
 	private int chAnneeFin;
 	private Timeline timeline;
-	
+	/** 
+    * <b>Constructeur de ModelTable</b> 
+    * @param partimeline correspond a l'objet timeline 
+    * ModelTable construit la JTable avec les information recupéré dans la Timeline entrez en paramètre
+    */ 
 	public ModelTable(Timeline partimeline){
 
 		timeline = partimeline;
@@ -54,7 +70,11 @@ public class ModelTable extends DefaultTableModel{
 		}
 
 	}//constructeur
-
+	/** 
+    * Méthode ajoutEvenememnt
+    * @param parEvt correspond a l'objet Evenement
+    * Ajoute a la JTable un Evenement on fonction de ces champs
+    */ 
 	public void ajoutEvenement(Evenement parEvt) {
 		int indiceColonne = parEvt.getChDate().getAnnee() - chAnneeDebut;
 		int indiceLigne = parEvt.getChPoids()-1;

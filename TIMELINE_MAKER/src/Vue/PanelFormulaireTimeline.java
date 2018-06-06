@@ -17,7 +17,11 @@ import Modele.Date;
 import Modele.ExceptionCreationTimeline;
 import Modele.ExceptionDate;
 import Modele.Timeline;
-
+/**
+ * PanelFormulaireTimeline est la classe permet de crée un JPanel 
+ * gérer par un GridBagLayout
+ * @author Maxime VINCENT et Hugo HAMEL
+ */
 public class PanelFormulaireTimeline extends JPanel{
 
 	private static final long serialVersionUID = 1L;
@@ -37,7 +41,10 @@ public class PanelFormulaireTimeline extends JPanel{
 		
 	private JTextField textLienDossier = new JTextField(15);
 
-	
+	/**
+	 * Contructeur de la classe PanelFormulaireTimeline 
+	 * ajoute des elements au panel pour crée un formulaire
+	 */
 	public PanelFormulaireTimeline(){
 		
 		setBackground(new Color(128, 208, 208));
@@ -158,17 +165,26 @@ public class PanelFormulaireTimeline extends JPanel{
 		
 	}
 
-
+	/**
+	 * Méthode permetant de mettre a l'écoute les boutons du Jpanel dans le controleur
+	 * @param parC controleur a mettre a l'écoute
+	 */
 	public void enregistreEcouteur(Controleur parC){
 		creeTimeline.addActionListener(parC);
 	}
 	
-    
+    /**
+     * réinitialise les champs de saisie du formulaire
+     */
     public void reset(){
     	this.textTitre.setText("") ;
         this.textTitre.requestFocus() ;
     }
     
+    /**
+     * récupère la date saisie dans les JComboBox de la date de debut
+     * @return Date de debut
+     */
     public Date getDateDebut() {
     	String jour = boxJourDebut.getSelectedItem().toString();
     	String mois = boxMoisDebut.getSelectedItem().toString();
@@ -181,6 +197,10 @@ public class PanelFormulaireTimeline extends JPanel{
 		}
 		return null;
     }
+    /**
+     * récupère la date saisie dans les JComboBox de la date de fin
+     * @return Date de fin
+     */
     public Date getDateFin() {
     	String jour = boxJourFin.getSelectedItem().toString();
     	String mois = boxMoisFin.getSelectedItem().toString();
@@ -194,6 +214,11 @@ public class PanelFormulaireTimeline extends JPanel{
 		return null;
     }
     
+    /**
+     * recupère la période saisie
+     * 
+     * @return un entier
+     */
     public int getPeriode(){
     	try {
     		int n = Integer.parseInt(textPeriode.getText());
@@ -202,7 +227,11 @@ public class PanelFormulaireTimeline extends JPanel{
 			return 1;
 		}
     }
-
+	/**
+	 * Méthode qui permet de definir la timeline en fonctio des valeurs saisie 
+	 * @param parTimeline le time a definir
+	 * @throws ExceptionCreationTimeline
+	 */
 	public void setTimeline(Timeline parTimeline) throws ExceptionCreationTimeline{
 		Date debut = getDateDebut();
 		Date fin = getDateFin();
@@ -215,7 +244,10 @@ public class PanelFormulaireTimeline extends JPanel{
 		parTimeline.setTimeline(titre,debut,fin,periode,lien);
 		
 	}
-	
+    /**
+     * renvoie dans une list de String les jours de 1 a 31
+     * @return liste de String
+     */
 	public String[] getListJour() {
 		String[] listJour = new String[31];
 		for(int i = 1;i<=31;i++) {
@@ -223,7 +255,10 @@ public class PanelFormulaireTimeline extends JPanel{
 		}
 		return listJour;
 	}
-	
+    /**
+     * renvoie dans une ArrayList de String les années de 0 a aujourd'hui
+     * @return ArrayListe de String
+     */
 	private ArrayList<String> getArrayListAnnee() {
 		ArrayList<String> listAnnee = new ArrayList<String>();
 		for(int i = 0; i<=new Date().getAnnee();i++) {

@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"Controleur"},{"l":"Modele"},{"l":"Vue"}]
