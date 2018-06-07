@@ -26,7 +26,7 @@ public class PanelFormulaireTimeline extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 	private JLabel	titreFenetre;
-	private JButton creeTimeline = new JButton("Crée");
+	private JButton creeTimeline = new JButton("Créer");
 	private JTextField textTitre = new JTextField(15);
 	
 	private JComboBox<?> boxJourDebut;
